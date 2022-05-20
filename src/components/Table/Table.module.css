@@ -1,0 +1,68 @@
+.tableStyle {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: grey;
+  width: max-content;
+}
+
+.tableStyleTh {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: -internal-center;
+  color: #70757a;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 12px;
+  width: 30px;
+  text-align: start;
+  padding-left: 10px;
+}
+
+.tableStyleFirstTd {
+  color: #202124;
+  font-size: 14px;
+  line-height: 0;
+  height: 40px;
+  padding: 0;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  width: 163px;
+}
+
+.tableStyleFirstTdPosi {
+  display: inline-block;
+  width: 25px;
+}
+
+.tableStyleFirstTdName {
+  max-width: 104px;
+  padding-right: 8px;
+}
+
+.tableStyleTd {
+  color: #202124;
+  font-size: 14px;
+  line-height: 0;
+  height: 40px;
+  padding: 0;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+.tableStyleTr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.tableStyleTdImg {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+ 
