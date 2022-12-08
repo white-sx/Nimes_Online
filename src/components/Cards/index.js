@@ -8,7 +8,7 @@ function Cards() {
   const { request, data, error, loading } = useFetch();
 
   React.useEffect(() => {
-    request("https://gogoanime.consumet.org/recent-release", {
+    request("https://appanimeplus.tk/play-api.php?latest", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -21,14 +21,14 @@ function Cards() {
       <>
         {data.map((data, index) => (
           <Col key={index} xs={6} md={2}>
-            <a href={data.episodeUrl} style={{textDecoration: "none", color:"#f2f2f2"}}>
+            <a href={"#"} style={{textDecoration: "none", color:"#f2f2f2"}}>
               <Card style={{ width: "100%", height:"95%" }} bg="dark" variant="dark">
                 <Ratio aspectRatio="1x1">
-                  <Card.Img src={data.animeImg} />
+                  <Card.Img src={`https://cdn.appanimeplus.tk/img/${data.category_image}`} />
                 </Ratio>
                 <Card.Body>
                   <Card.Title style={{ fontSize: ".9rem", width:"100%" }}>
-                    {data.animeTitle}
+                    {data.title}
                   </Card.Title>
                 </Card.Body>
               </Card>

@@ -2,7 +2,6 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cards from "./components/Cards";
 import Container from "react-bootstrap/Container";
-import CardGroup from "react-bootstrap/CardGroup";
 import NavbarH from "./components/Navbar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

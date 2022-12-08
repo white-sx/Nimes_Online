@@ -45,7 +45,7 @@ function CardsSlide() {
     ]
   };
   React.useEffect(() => {
-    request("https://gogoanime.consumet.org/popular", {
+    request("https://appanimeplus.tk/play-api.php?populares", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +62,7 @@ function CardsSlide() {
             <a href={data.episodeUrl} style={{textDecoration: "none", color:"#f2f2f2"}}>
               <Card style={{ width: "90%" }} bg="dark" variant="dark">
                 <Ratio aspectRatio="1x1">
-                  <Card.Img src={data.animeImg} />
+                  <Card.Img src={`https://cdn.appanimeplus.tk/img/${data.category_image}`} />
                 </Ratio>
           
               </Card>
