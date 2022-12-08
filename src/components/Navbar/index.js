@@ -52,7 +52,7 @@ function NavbarH() {
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button variant="danger">
+                <Button variant="danger" className="text-white">
                  <img src={Icon} style={{fill:"#fffff"}}/>
                 </Button>
               </Form>
