@@ -1,7 +1,7 @@
 import Carousel from "react-bootstrap/Carousel";
 import { Ratio } from "react-bootstrap";
 import image1 from "../../assets/img/01.jpg"
-import image2 from "../../assets/img/02.jpg"
+import image2 from "../../assets/img/02.png"
 import image3 from "../../assets/img/03.jpg"
 
 function Highlights() {

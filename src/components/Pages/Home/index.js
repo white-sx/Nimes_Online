@@ -11,7 +11,7 @@ import { Col } from "react-bootstrap";
 function Home({setVideoHome}) {
   return (
     <>
-     <Container>
+     <Container style={{  maxWidth: "100%" }}>
           <Row>
             
             <Col>
@@ -19,7 +19,7 @@ function Home({setVideoHome}) {
             </Col>
           </Row>
         </Container>
-      <Container style={{ marginTop: "1rem" }}>
+      <Container style={{ marginTop: "1rem", maxWidth: "100%" }}>
         <Label text="Lançamentos" />
         <Row
           style={{
@@ -31,7 +31,7 @@ function Home({setVideoHome}) {
           <Cards setVideoCard={setVideoHome}/>
         </Row>
       </Container>
-      <Container style={{ marginTop: "1rem" }}>
+      <Container style={{ marginTop: "1rem", maxWidth: "100%" }}>
         <Label text="Populares" />
         <Row
           style={{
