@@ -2,8 +2,8 @@
 
 function Label({text}) {
   return (
-    <div style={{backgroundColor:"red",maxWidth:"110px", borderRadius: "5px",color:"#F2f2f2",padding:"5px"}}>
-      <span className="ms-1">{text}</span>
+    <div style={{color:"#F2f2f2", fontWeight: "500"}}>
+      <h2 className="ms-1">{text}</h2>
     </div>
   );
 }
