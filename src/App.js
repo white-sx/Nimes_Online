@@ -11,9 +11,9 @@ import Video from "./components/Pages/VideoPage";
 import { useState } from "react";
 
 function App() {
-  const [video, setVideo] = useState()
+  const [videoEpId, setVideoEpId] = useState()
 
-  if(video !== null)
+  if(videoEpId !== null)
   return (
    
     <>
@@ -29,13 +29,13 @@ function App() {
         </header>
         <main style={{ overflow: "hidden" }}>
           <Routes>
-            <Route path="/" element={<Home setVideoHome={setVideo} />} />
-            <Route path="video" element={<Video videoId={video} />} />
+            <Route path="/" element={<Home setVideoHome={setVideoEpId} />} />
+            <Route path="video" element={<Video videoId={videoEpId} />} />
 
           </Routes>
-          
+          {console.log(videoEpId)}
         </main>
-        {console.log(video)}
+       
       </BrowserRouter>
     </>
   );

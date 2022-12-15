@@ -16,7 +16,7 @@ function Cards({setVideoCard}) {
         "Content-Type": "application/json",
       },
     });
-    // console.log(data)
+   
   }, [request, data]);
 
   if (data !== null)
