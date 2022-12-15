@@ -6,7 +6,7 @@ import image3 from "../../assets/img/03.jpg"
 
 function Highlights() {
   return (
-    <Carousel style={{marginTop:"4.5rem"}}>
+    <Carousel indicators={false} fade controls={false} style={{marginTop:"4.5rem"}}>
       <Carousel.Item interval={3500}>
         <Ratio aspectRatio="21x9">
           <img
