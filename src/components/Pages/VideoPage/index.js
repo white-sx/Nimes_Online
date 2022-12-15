@@ -5,7 +5,7 @@ import useFetch from "../../Api/useFetch";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { HiArrowSmLeft } from "react-icons/hi";
-import { HiMenu } from "react-icons/hi";
+
 import { HiArrowSmRight } from "react-icons/hi";
 
 function Video({ videoId }) {
@@ -22,7 +22,7 @@ function Video({ videoId }) {
 
 
 
-  
+
   if (data !== null)
     return (
       <>
@@ -43,11 +43,12 @@ function Video({ videoId }) {
                 backgroundColor: "#D98723",
                 border: "none",
                 margin: "0px 4px",
+                fontSize:".9rem"
               }}
             >
-              <h3>
-                <HiMenu/>
-              </h3>
+              
+               Todos os Episódios
+              
             </Button>
             <Button style={{ backgroundColor: "#D98723", border: "none" }}>
               <h3>
