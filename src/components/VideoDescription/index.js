@@ -68,9 +68,9 @@ function VideoDescription({ nameId, epTitle }) {
           </div>
         </div>
 
-        <h2>{epTitle}</h2>
-        <h3>{category}</h3>
-        <p>{description}</p>
+        <h2 style={{fontSize:"1.375rem"}}>{epTitle}</h2>
+        <h3 style={{fontSize:".875rem", color:"#a0a0a0"}}>{category}</h3>
+        <p style={{fontSize:"1rem", lineHeight:"1.5rem"}}>{description}</p>
       </Container>
     );
 }
