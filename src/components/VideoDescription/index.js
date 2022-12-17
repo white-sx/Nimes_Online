@@ -5,10 +5,10 @@ import useFetch from "../Api/useFetch";
 function VideoDescription({ nameId, epTitle }) {
   const { request, data } = useFetch();
   const [animId, setAnimId] = useState();
-  const [category, setCategory] = useState();
-  const [description, setDescription] = useState();
-  const [year, setYear] = useState();
-  const [animTitle, setAnimTitle] = useState();
+  const [category, setCategory] = useState(null);
+  const [description, setDescription] = useState(null);
+  const [year, setYear] = useState(null);
+  const [animTitle, setAnimTitle] = useState(null);
 
   React.useEffect(() => {
     if (nameId !== undefined)
@@ -42,9 +42,15 @@ function VideoDescription({ nameId, epTitle }) {
     }
   }, [setAnimId, data, animId, setCategory, setDescription, setYear]);
 
-  if (data !== null)
+  if (
+    data !== null &&
+    category !== null &&
+    description !== null &&
+    year !== null &&
+    animTitle !== null
+  )
     return (
-      <Container style={{ color: "white" }}>
+      <Container style={{ color: "white" , marginTop:"1rem"}}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <div
             style={{
@@ -68,9 +74,13 @@ function VideoDescription({ nameId, epTitle }) {
           </div>
         </div>
 
-        <h2 style={{fontSize:"1.375rem"}}>{epTitle}</h2>
-        <h3 style={{fontSize:".875rem", color:"#a0a0a0"}}>{category}</h3>
-        <p style={{fontSize:"1rem", lineHeight:"1.5rem"}}>{description}</p>
+        <h2 style={{ fontSize: "1.375rem" }}>{epTitle}</h2>
+        <h3 style={{ fontSize: ".875rem", color: "#a0a0a0" }}>{category}</h3>
+        <div style={{ marginTop: "1rem" }}>
+          <p style={{ fontSize: "1rem", lineHeight: "1.5rem" }}>
+            {description}
+          </p>
+        </div>
       </Container>
     );
 }
