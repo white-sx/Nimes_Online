@@ -45,22 +45,22 @@ function Video({ videoId }) {
           className="mb-2"
           style={{ width: "100%", marginTop: "8px" }}
         >
-          <Button style={{ backgroundColor: "#D98723", border: "none" }}>
+          <Button style={{ backgroundColor: "transparent", border: "1px solid #ccc" }}>
             <h3>
               <HiArrowSmLeft />
             </h3>
           </Button>
           <Button
             style={{
-              backgroundColor: "#D98723",
-              border: "none",
+              backgroundColor: "transparent",
+              border: "1px solid #ccc",
               margin: "0px 4px",
               fontSize: ".9rem",
             }}
           >
             Todos os Episódios
           </Button>
-          <Button style={{ backgroundColor: "#D98723", border: "none" }}>
+          <Button style={{ backgroundColor: "transparent", border: "1px solid #ccc" }}>
             <h3>
               <HiArrowSmRight />
             </h3>
@@ -68,7 +68,7 @@ function Video({ videoId }) {
         </ButtonGroup>
       </Container>
       <Container>
-        <VideoDescription nameId={animTitleForm} animTitle={animEp}/>
+        <VideoDescription nameId={animTitleForm} epTitle={animEp}/>
       </Container>
     </>
   );
