@@ -76,7 +76,10 @@ function VideoDescription({ nameId, epTitle }) {
 
         <h2 style={{ fontSize: "1.375rem" }}>{epTitle}</h2>
         <h3 style={{ fontSize: ".875rem", color: "#a0a0a0" }}>{category}</h3>
-        <div style={{ marginTop: "1rem" }}>
+
+
+        
+        <div style={{ marginTop: "1rem", width:"100%"}}>
           <p style={{ fontSize: "1rem", lineHeight: "1.5rem" }}>
             {description}
           </p>
