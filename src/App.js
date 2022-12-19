@@ -11,9 +11,9 @@ import Home from "./components/Pages/Home";
 import Video from "./components/Pages/VideoPage";
 
 function App() {
-  const [videoEpId, setVideoEpId] = useState();
+ 
 
-  if (videoEpId !== null)
+  
     return (
       <>
         <BrowserRouter>
@@ -28,8 +28,8 @@ function App() {
           </header>
           <main style={{ overflow: "hidden" }}>
             <Routes>
-              <Route path="/" element={<Home setVideoHome={setVideoEpId} />} />
-              <Route path="video" element={<Video videoId={videoEpId} />} />
+              <Route path="/" element={<Home />} />
+             <Route path="video" element={<Video/>} />
             </Routes>
             
            

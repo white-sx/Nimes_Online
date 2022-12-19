@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Highlights from "../../Carousel";
 import { Col } from "react-bootstrap";
 
-function Home({setVideoHome}) {
+function Home() {
   return (
     <>
      <Container >
@@ -28,7 +28,7 @@ function Home({setVideoHome}) {
             marginTop: ".5rem",
           }}
         >
-          <Cards setVideoCard={setVideoHome}/>
+          <Cards/>
         </Row>
       </Container>
       <Container style={{ marginTop: "1rem" }}>
