@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import useFetch from "../Api/useFetch";
 
-function VideoDescription({ epTitle, animName }) {
-  const { request, data, error, loading } = useFetch();
-  const [episodeName, setEpisodeName] = useState();
+function VideoDescription({  animName }) {
+  const { request, data } = useFetch();
+
 
   React.useEffect(() => {
     request(`https://appanimeplus.tk/play-api.php?search=${animName}`, {
@@ -24,10 +24,12 @@ function VideoDescription({ epTitle, animName }) {
       let jsonData = await response.json();
 
       if (jsonData !== null)
+      
         localStorage.setItem("description", jsonData[0].category_description);
       localStorage.setItem("genres", jsonData[0].category_genres);
       localStorage.setItem("name", jsonData[0].category_name);
       localStorage.setItem("year", jsonData[0].ano);
+     
     }
 
     description();
@@ -58,7 +60,7 @@ function VideoDescription({ epTitle, animName }) {
         </div>
       </div>
 
-      <h2 style={{ fontSize: "1.375rem" }}>{epTitle}</h2>
+      <h2 style={{ fontSize: "1.375rem" }}>{localStorage.getItem("epTitle")}</h2>
       <h3 style={{ fontSize: ".875rem", color: "#a0a0a0" }}> {localStorage.getItem("genres")}</h3>
 
       <div style={{ marginTop: "1rem", width: "100%" }}>

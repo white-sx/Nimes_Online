@@ -2,81 +2,83 @@ import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import Container from "react-bootstrap/Container";
 import useFetch from "../../Api/useFetch";
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import { HiArrowSmLeft } from "react-icons/hi";
-import { HiArrowSmRight } from "react-icons/hi";
 import VideoDescription from "../../VideoDescription";
+import VideoControl from "../../VideoControl";
 
 function Video() {
   const { request, data } = useFetch();
   const [videoId, setVideoId] = useState();
+  const [link, setLink] = useState();
   let animTitleForm;
   let animEp;
-  let link;
+
+  localStorage.setItem("urlEpisode", `https://appanimeplus.tk/play-api.php?episodios=${videoId}`);
 
   React.useEffect(() => {
     setVideoId(localStorage.getItem("epAnimId"));
+    
     if (videoId !== undefined)
-      request(`https://appanimeplus.tk/play-api.php?episodios=${videoId}`, {
+      request(localStorage.getItem("urlEpisode"), {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
       });
-  }, [request, data, videoId, setVideoId]);
+      localStorage.setItem("epTitle", animEp);
 
-  async function setTitleForm() {
+
+
+      
+    if (data !== null) setLink(data[0].locationsd);
+  }, [request, data, videoId, setVideoId, animEp]);
+
+  function setTitleForm() {
     const animTitle = data[0].title;
-    const linkEp = data[0].location;
     animTitleForm = animTitle
       .replace(/[^a-zA-Z 0-9]+/gm, "_")
       .replace(/\s+/g, "_")
       .replace(/.Ep[a-zA-Z]+...../gm, "")
       .toLowerCase();
-    link = linkEp;
     animEp = animTitle;
+    
   }
 
+  
   if (data !== null || link !== undefined) setTitleForm();
   return (
     <>
       <Container style={{ marginTop: "8rem" }}>
         <ReactPlayer width={"100%"} controls={true} url={link} />
 
-        <ButtonGroup
+        {/* <ButtonGroup
           size="lg"
           className="mb-2"
           style={{ width: "100%", marginTop: "8px" }}
         >
-          <Button
-            style={{ backgroundColor: "transparent", border: "1px solid #ccc" }}
-          >
+          <Button variant="outline-secondary" onClick={preventEpisode}>
             <h3>
               <HiArrowSmLeft />
             </h3>
           </Button>
           <Button
+            variant="outline-secondary"
             style={{
-              backgroundColor: "transparent",
-              border: "1px solid #ccc",
               margin: "0px 4px",
               fontSize: ".9rem",
             }}
           >
             Todos os Episódios
           </Button>
-          <Button
-            style={{ backgroundColor: "transparent", border: "1px solid #ccc" }}
-          >
+          <Button variant="outline-secondary" onClick={nextEpisode}>
             <h3>
               <HiArrowSmRight />
             </h3>
           </Button>
-        </ButtonGroup>
+        </ButtonGroup> */}
+         <VideoControl/>
       </Container>
       <Container>
-        <VideoDescription epTitle={animEp} animName={animTitleForm} />
+        <VideoDescription  animName={animTitleForm} />
       </Container>
     </>
   );
