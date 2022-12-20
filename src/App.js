@@ -9,6 +9,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Home from "./components/Pages/Home";
 import Video from "./components/Pages/VideoPage";
+import AnimePage from "./components/Pages/AnimePage";
 
 function App() {
  
@@ -30,6 +31,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
              <Route path="video" element={<Video/>} />
+             <Route path="anime" element={<AnimePage/>} />
             </Routes>
             
            
