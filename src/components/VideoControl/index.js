@@ -32,12 +32,16 @@ function VideoControl(buttonStatus) {
           className="mb-2"
           style={{ width: "100%", marginTop: "8px" }}
         >
-          <Button variant="outline-secondary" {...buttonStatus} onClick={preventEpisode}>
+          <Button
+            variant="outline-secondary"
+            {...buttonStatus}
+            onClick={preventEpisode}
+          >
             <h3>
               <HiArrowSmLeft />
             </h3>
           </Button>
-          <Link to={"anime"}>
+
           <Button
             variant="outline-secondary"
             style={{
@@ -45,10 +49,14 @@ function VideoControl(buttonStatus) {
               fontSize: ".9rem",
             }}
           >
-            Todos os Episódios
+            <Link to={"/anime"} style={{color:"#6c757d",textDecoration:"none"}}>Todos os Episódios</Link>
           </Button>
-          </Link>
-          <Button variant="outline-secondary" {...buttonStatus} onClick={nextEpisode}>
+
+          <Button
+            variant="outline-secondary"
+            {...buttonStatus}
+            onClick={nextEpisode}
+          >
             <h3>
               <HiArrowSmRight />
             </h3>

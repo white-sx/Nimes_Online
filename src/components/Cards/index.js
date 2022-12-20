@@ -15,7 +15,7 @@ function Cards() {
         "Content-Type": "application/json",
       },
     });
-    console.log("card")
+    
   }, []);
 
   if (data !== null)
@@ -32,6 +32,7 @@ function Cards() {
                   "urlEpisode",
                   `https://appanimeplus.tk/play-api.php?episodios=${localStorage.getItem("epAnimId")}`
                 );
+                localStorage.setItem("ImageUrl",e.target.getAttribute('src'))
               }}
             >
               <Card

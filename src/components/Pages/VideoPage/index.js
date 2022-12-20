@@ -24,6 +24,7 @@ function Video() {
       localStorage.setItem("epTitle", data[0].title);
       setLink(data[0].locationsd);
       localStorage.setItem("epAnimId", data[0].video_id);
+      localStorage.setItem("AnimeNameForm",animTitleForm )
     }
   }, [data, setDataUrl, dataUrl, setLink]);
 
