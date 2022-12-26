@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import useFetch from "../../Api/useFetch";
 
 function AnimePage() {
@@ -14,8 +15,6 @@ function AnimePage() {
         "Content-Type": "application/json",
       },
     });
-
-    
   }, [animId, setAnimeId, data]);
 
   if (data !== null)
@@ -62,7 +61,33 @@ function AnimePage() {
           </Row>
         </Container>
         <Container>
-         
+          {data.map((item) => {
+            return (
+              <Link
+              to={"/video"}
+                style={{
+                  marginTop: "1rem",
+                  display: "block",
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+                key={item.video_id}
+                onClick={function (e) {
+                  localStorage.setItem("epAnimId",item.video_id)
+                  localStorage.setItem(
+                    "urlEpisode",
+                    `https://appanimeplus.tk/play-api.php?episodios=${localStorage.getItem("epAnimId")}`
+                  );
+                }}
+              >
+                <Card>
+                  <Card.Body>
+                    <h4>{item.title}</h4>
+                  </Card.Body>
+                </Card>
+              </Link>
+            );
+          })}
         </Container>
       </>
     );

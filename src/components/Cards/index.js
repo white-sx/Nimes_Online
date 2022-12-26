@@ -27,7 +27,7 @@ function Cards() {
               to="video"
               style={{ textDecoration: "none", color: "#f2f2f2" }}
               onClick={function (e) {
-                localStorage.setItem("epAnimId", e.target.id.toString());
+                localStorage.setItem("epAnimId", e.target.id);
                 localStorage.setItem(
                   "urlEpisode",
                   `https://appanimeplus.tk/play-api.php?episodios=${localStorage.getItem("epAnimId")}`
