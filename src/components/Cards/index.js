@@ -3,7 +3,7 @@ import useFetch from "../Api/useFetch";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import { Ratio } from "react-bootstrap";
-import { Link } from "react-router-dom";
+
 
 function Cards() {
   const { request, data, error, loading } = useFetch();
@@ -23,8 +23,8 @@ function Cards() {
       <>
         {data.map((data, index) => (
           <Col key={index} xs={6} md={2}>
-            <Link
-              to="video"
+            <a
+              href="video"
               style={{ textDecoration: "none", color: "#f2f2f2" }}
               onClick={function (e) {
                 localStorage.setItem("epAnimId", e.target.id);
@@ -55,7 +55,7 @@ function Cards() {
                   </Card.Title>
                 </Card.Body>
               </Card>
-            </Link>
+            </a>
           </Col>
         ))}
       </>

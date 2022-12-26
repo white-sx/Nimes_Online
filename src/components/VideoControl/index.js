@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { HiArrowSmLeft } from "react-icons/hi";
 import { HiArrowSmRight } from "react-icons/hi";
-import { Link } from "react-router-dom";
+
 
 function VideoControl(buttonStatus) {
   async function nextEpisode() {

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import useFetch from "../../Api/useFetch";
 
 function AnimePage() {
@@ -31,7 +30,7 @@ function AnimePage() {
             <Col md="auto">
               <img src={localStorage.getItem("ImageUrl")} />
             </Col>
-            <Col style={{ marginLeft: "3rem" }}>
+            <Col style={{ marginTop: ".9rem" }}>
               <h1 style={{ color: "#FAD82D" }}>
                 {localStorage.getItem("name")}
               </h1>
@@ -62,8 +61,8 @@ function AnimePage() {
         <Container>
           {data.map((item) => {
             return (
-              <Link
-              to={"/video"}
+              <a
+              href={"/video"}
                 style={{
                   marginTop: "1rem",
                   display: "block",
@@ -81,10 +80,10 @@ function AnimePage() {
               >
                 <Card border="warning" bg="dark" text="light">
                   <Card.Body>
-                    <h4>{item.title}</h4>
+                    <h4 style={{fontSize:"1.2rem"}}>{item.title}</h4>
                   </Card.Body>
                 </Card>
-              </Link>
+              </a>
             );
           })}
         </Container>
