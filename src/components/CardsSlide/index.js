@@ -60,18 +60,27 @@ function CardsSlide() {
           {data.map((data, index) => (
             <Col key={index} xs={6} md={2}>
               <a
-                href={"#"}
+                href={"/anime"}
                 style={{ textDecoration: "none", color: "#f2f2f2" }}
+                onClick={function (e) {
+                  localStorage.setItem("animeId", e.target.id);
+                  localStorage.setItem("name", data.category_name);
+                  localStorage.setItem(
+                    "ImageUrl",
+                    e.target.getAttribute("src")
+                  );
+                }}
               >
                 <Card style={{ width: "90%" }} bg="dark" variant="dark">
                   <Ratio aspectRatio="1x1">
                     <Card.Img
+                      id={data.id}
                       src={`https://cdn.appanimeplus.tk/img/${data.category_image}`}
                     />
                   </Ratio>
                   <Card.Body>
-                    <Card.Title style={{ fontSize: ".9rem"}}>
-                     {data.category_name}
+                    <Card.Title style={{ fontSize: ".9rem" }}>
+                      {data.category_name}
                     </Card.Title>
                   </Card.Body>
                 </Card>

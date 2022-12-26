@@ -41,8 +41,8 @@ function VideoControl(buttonStatus) {
               <HiArrowSmLeft />
             </h3>
           </Button>
-          <Link
-            to={"/anime"}
+          <a
+            href={"/anime"}
             style={{
               color: "#6c757d",
               textDecoration: "none",
@@ -54,7 +54,7 @@ function VideoControl(buttonStatus) {
             <Button variant="outline-secondary" style={{height:"100%", borderRadius:"0px"}}>
               Todos os Episódios
             </Button>
-          </Link>
+          </a>
           <Button
             variant="outline-secondary"
             {...buttonStatus}

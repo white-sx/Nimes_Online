@@ -16,7 +16,6 @@ function AnimePage() {
       },
     });
   }, [animId, setAnimeId, data]);
-
   if (data !== null)
     return (
       <>
@@ -69,7 +68,7 @@ function AnimePage() {
                   marginTop: "1rem",
                   display: "block",
                   textDecoration: "none",
-                  color: "inherit",
+                  
                 }}
                 key={item.video_id}
                 onClick={function (e) {
@@ -80,7 +79,7 @@ function AnimePage() {
                   );
                 }}
               >
-                <Card>
+                <Card border="warning" bg="dark" text="light">
                   <Card.Body>
                     <h4>{item.title}</h4>
                   </Card.Body>

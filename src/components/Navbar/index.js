@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/img/logo.png";
 import Icon from "../../assets/img/search.svg";
 
@@ -13,8 +14,11 @@ function NavbarH() {
     <>
       <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
         <Container fluid>
-          <Navbar.Brand href="#">
+          <Navbar.Brand >
+            <Link to="/">
             <img style={{ maxWidth: "150px" }} src={Logo} />
+            </Link>
+           
           </Navbar.Brand>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-xll`} />
           <Navbar.Offcanvas
