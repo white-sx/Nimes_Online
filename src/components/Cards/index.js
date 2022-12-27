@@ -21,6 +21,8 @@ function Cards() {
               localStorage.setItem("ImageUrl", e.target.getAttribute("src"));
               Global.setEpisodeId(data.video_id);
               Global.setIdImage(data.category_image);
+              localStorage.setItem("episodeAnimeIdLocal", data.video_id);
+              
             }}
           >
             <Card
