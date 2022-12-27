@@ -6,6 +6,7 @@ import { Ratio } from "react-bootstrap";
 
 import Slider from "react-slick";
 import { GlobalContext } from "../Api/GlobalContext";
+import { Link } from "react-router-dom";
 
 function CardsSlide() {
   const { request, data, error, loading } = useFetch();
@@ -60,20 +61,22 @@ function CardsSlide() {
         <Slider {...settings} style={{ marginLeft: ".3.5rem" }}>
           {data.map((data, index) => (
             <Col key={index} xs={6} md={2}>
-              <a
-                href={"/anime"}
+              <Link
+                to={"/anime"}
                 style={{ textDecoration: "none", color: "#f2f2f2" }}
                 onClick={function (e) {
-                  localStorage.setItem("animeId", e.target.id);
-                  Global.setAnimeId(e.target.id);
-                  localStorage.setItem("name", data.category_name);
+                  
+                 console.log(data)
+                  Global.setAnimeId(data.id);
+                  Global.setIdImage(data.category_image)
+                  Global.setAnimeTitle(data.category_name)
                  
                 }}
               >
                 <Card style={{ width: "90%" }} bg="dark" variant="dark">
                   <Ratio aspectRatio="1x1">
                     <Card.Img
-                      id={data.id}
+                     
                       src={`https://cdn.appanimeplus.tk/img/${data.category_image}`}
                     />
                   </Ratio>
@@ -83,7 +86,7 @@ function CardsSlide() {
                     </Card.Title>
                   </Card.Body>
                 </Card>
-              </a>
+              </Link>
             </Col>
           ))}
         </Slider>
