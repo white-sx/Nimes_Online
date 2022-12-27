@@ -44,7 +44,7 @@ function NavbarH() {
                 borderRadius: "16px",
                 boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                 backdropFilter: "blur(6.6px)",
-                "-webkit-backdrop-filter": "blur(6.6px)",
+                
                 border: "1px solid rgba(0, 0, 0, 0.53)",
                 paddingBottom: "1rem",
               }}

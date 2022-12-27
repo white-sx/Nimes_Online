@@ -4,27 +4,44 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { HiArrowSmLeft } from "react-icons/hi";
 import { HiArrowSmRight } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import { GlobalContext } from "../Api/GlobalContext";
 
 function VideoControl() {
-  
-    async function nextEpisode() {
-      localStorage.setItem(
-        "urlEpisode",
-        `https://appanimeplus.tk/play-api.php?episodios=${localStorage.getItem(
-          "epAnimId"
-        )}&catid=${localStorage.getItem("animeId")}&next`
-      );
-    }
+  const Global = React.useContext(GlobalContext);
 
-    async function preventEpisode() {
-      localStorage.setItem(
-        "urlEpisode",
-        `https://appanimeplus.tk/play-api.php?episodios=${localStorage.getItem(
-          "epAnimId"
-        )}&catid=${localStorage.getItem("animeId")}&previous`
-      );
+  function changeEpisode(data) {
+    if (data !== null) {
+      console.log(data);
+      Global.setCurrentEpisodeTitle(data[0].title)
+      Global.setEpisodeId(data[0].video_id)
+      
+       if (data[0].locationsd !== null) {
+        Global.setStreamEpisodeVideo(data[0].locationsd)
+      // } else {
+        Global.setStreamEpisodeVideo(data[0].location)
+      // }
+    } else {
+      console.log("aqui");
     }
-  
+  }
+
+  async function nextEpisode() {
+    const responseData = await fetch(
+      `https://appanimeplus.tk/play-api.php?episodios=${Global.episodeId}&catid=${Global.animeId}&next`
+    );
+    const jsonData = await responseData.json();
+
+    changeEpisode(jsonData);
+  }
+
+  async function preventEpisode() {
+    const responseData = await fetch(
+      `https://appanimeplus.tk/play-api.php?episodios=${Global.episodeId}&catid=${Global.animeId}&previous`
+    );
+    const jsonData = await responseData.json();
+    changeEpisode(jsonData);
+  }
 
   return (
     <>
@@ -39,8 +56,8 @@ function VideoControl() {
               <HiArrowSmLeft />
             </h3>
           </Button>
-          <a
-            href={"/anime"}
+          <Link
+            to={"/anime"}
             style={{
               color: "#6c757d",
               textDecoration: "none",
@@ -54,12 +71,8 @@ function VideoControl() {
             >
               Todos os Episódios
             </Button>
-          </a>
-          <Button
-            variant="outline-secondary"
-           
-            onClick={nextEpisode}
-          >
+          </Link>
+          <Button variant="outline-secondary" onClick={nextEpisode}>
             <h3>
               <HiArrowSmRight />
             </h3>
@@ -70,4 +83,6 @@ function VideoControl() {
   );
 }
 
+}
 export default VideoControl;
+

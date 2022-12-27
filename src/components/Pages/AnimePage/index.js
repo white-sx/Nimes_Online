@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { GlobalContext } from "../../Api/GlobalContext";
 import useFetch from "../../Api/useFetch";
 
 function AnimePage() {
   const { request, data } = useFetch();
-  const [animId, setAnimeId] = useState();
+  const Global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-    setAnimeId(localStorage.getItem("animeId"));
-    request(`https://appanimeplus.tk/play-api.php?cat_id=${animId}`, {
+
+    request(`https://appanimeplus.tk/play-api.php?cat_id=${Global.animId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-  }, [animId, setAnimeId, data]);
-  if (data !== null)
+  }, [Global.animId, data]);
+  if (Global.genres === null && Global.description === null) return null;
+  if(data !== null)
     return (
       <>
         <Container
@@ -42,7 +45,7 @@ function AnimePage() {
                   marginTop: "-10px",
                 }}
               >
-                {localStorage.getItem("genres")}
+                {Global.genres}
               </span>
               <div
                 style={{
@@ -53,7 +56,7 @@ function AnimePage() {
                   lineHeight: "1.5rem",
                 }}
               >
-                <p>{localStorage.getItem("description")}</p>
+                <p>{Global.description}</p>
               </div>
             </Col>
           </Row>
@@ -61,29 +64,24 @@ function AnimePage() {
         <Container>
           {data.map((item) => {
             return (
-              <a
-              href={"/video"}
+              <Link
+                to={"/video"}
                 style={{
                   marginTop: "1rem",
                   display: "block",
                   textDecoration: "none",
-                  
                 }}
                 key={item.video_id}
                 onClick={function (e) {
-                  localStorage.setItem("epAnimId",item.video_id)
-                  localStorage.setItem(
-                    "urlEpisode",
-                    `https://appanimeplus.tk/play-api.php?episodios=${localStorage.getItem("epAnimId")}`
-                  );
+                  Global.setEpisodeId(item.video_id);
                 }}
               >
                 <Card border="warning" bg="dark" text="light">
                   <Card.Body>
-                    <h4 style={{fontSize:"1.2rem"}}>{item.title}</h4>
+                    <h4 style={{ fontSize: "1.2rem" }}>{item.title}</h4>
                   </Card.Body>
                 </Card>
-              </a>
+              </Link>
             );
           })}
         </Container>

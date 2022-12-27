@@ -10,35 +10,33 @@ import Col from "react-bootstrap/Col";
 import Home from "./components/Pages/Home";
 import Video from "./components/Pages/VideoPage";
 import AnimePage from "./components/Pages/AnimePage";
+import { GlobalStorage } from "./components/Api/GlobalContext";
 
 function App() {
- 
-
-  
-    return (
-      <>
-        <BrowserRouter>
-          <header>
-            <Container>
-              <Row>
-                <Col lg={12}>
-                  <NavbarH />
-                </Col>
-              </Row>
-            </Container>
-          </header>
-          <main style={{ overflow: "hidden" }}>
+  return (
+    <>
+      <BrowserRouter>
+        <header>
+          <Container>
+            <Row>
+              <Col lg={12}>
+                <NavbarH />
+              </Col>
+            </Row>
+          </Container>
+        </header>
+        <main style={{ overflow: "hidden" }}>
+          <GlobalStorage>
             <Routes>
               <Route path="/" element={<Home />} />
-             <Route path="video" element={<Video/>} />
-             <Route path="anime" element={<AnimePage/>} />
+              <Route path="video" element={<Video />} />
+              <Route path="anime" element={<AnimePage />} />
             </Routes>
-            
-           
-          </main>
-        </BrowserRouter>
-      </>
-    );
+          </GlobalStorage>
+        </main>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;

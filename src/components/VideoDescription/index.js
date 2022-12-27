@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
+import { GlobalContext } from "../Api/GlobalContext";
 import useFetch from "../Api/useFetch";
 
-function VideoDescription({  animName }) {
+function VideoDescription({ animName }) {
   const { request, data } = useFetch();
-
+  const Global = React.useContext(GlobalContext);
+  const [animeReleaseYear, setAnimeReleaseYear] = useState();
 
   React.useEffect(() => {
     request(`https://appanimeplus.tk/play-api.php?search=${animName}`, {
@@ -13,26 +15,30 @@ function VideoDescription({  animName }) {
         "Content-Type": "application/json",
       },
     });
-    if (data !== null) localStorage.setItem("animeId", data[0].id);
+    if (data !== null) Global.setAnimeId(data[0].id);
 
     async function description() {
       let response = await fetch(
-        `https://appanimeplus.tk/play-api.php?info=${localStorage.getItem(
-          "animeId"
-        )}`
+        `https://appanimeplus.tk/play-api.php?info=${Global.animeId}`
       );
       let jsonData = await response.json();
 
-      if (jsonData !== null)
-      
-        localStorage.setItem("description", jsonData[0].category_description);
-      localStorage.setItem("genres", jsonData[0].category_genres);
-      localStorage.setItem("name", jsonData[0].category_name);
-      localStorage.setItem("year", jsonData[0].ano);
-     
+      if (jsonData !== null) {
+        setAnimeReleaseYear(jsonData[0].ano);
+        Global.setDescription(jsonData[0].category_description);
+        Global.setGenres(jsonData[0].category_genres);
+        Global.setAnimeTitle(jsonData[0].category_name);
+      }
     }
 
     description();
+
+    if (
+      Global.currentEpisodeTitle === null &&
+      Global.description === null &&
+      Global.genres === null
+    )
+      return null;
   }, [request, data, animName]);
 
   return (
@@ -52,17 +58,19 @@ function VideoDescription({  animName }) {
               textTransform: "capitalize",
             }}
           >
-            {localStorage.getItem("name")}
+            {Global.animeTitle}
           </span>
         </div>
         <div>
-          <span style={{ fontSize: ".875rem" }}> {localStorage.getItem("year")}</span>
+          <span style={{ fontSize: ".875rem" }}> {animeReleaseYear}</span>
         </div>
       </div>
 
-      <h2 style={{ fontSize: "1.375rem" }}>{localStorage.getItem("epTitle")}</h2>
-      <h3 style={{ fontSize: ".875rem", color: "#a0a0a0" }}> {localStorage.getItem("genres")}</h3>
-
+      <h2 style={{ fontSize: "1.375rem" }}>{Global.currentEpisodeTitle}</h2>
+      <h3 style={{ fontSize: ".875rem", color: "#a0a0a0" }}>
+        {" "}
+        {Global.genres}
+      </h3>
     </Container>
   );
 }

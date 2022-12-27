@@ -4,16 +4,17 @@ import Container from "react-bootstrap/Container";
 import useFetch from "../../Api/useFetch";
 import VideoDescription from "../../VideoDescription";
 import VideoControl from "../../VideoControl";
+import { GlobalContext } from "../../Api/GlobalContext";
 
 function Video() {
   const { request, data } = useFetch();
   const [link, setLink] = useState();
-  const [dataUrl, setDataUrl] = useState(localStorage.getItem("urlEpisode"));
   let animTitleForm;
+  const Global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-    setDataUrl(localStorage.getItem("urlEpisode"));
-    request(dataUrl, {
+    if (Global.episodeId === null ) return null;
+    request(`https://appanimeplus.tk/play-api.php?episodios=${Global.episodeId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -21,13 +22,14 @@ function Video() {
     });
 
     if (data !== null) {
-      localStorage.setItem("epTitle", data[0].title);
       setLink(data[0].locationsd);
       localStorage.setItem("epAnimId", data[0].video_id);
-      localStorage.setItem("AnimeNameForm",animTitleForm )
+      localStorage.setItem("AnimeNameForm", animTitleForm);
+      Global.setCurrentEpisodeTitle(data[0].title);
+      
     }
-  }, [data, setDataUrl, dataUrl, setLink]);
-
+  }, [data, setLink]);
+  
   function setTitleForm() {
     if (data !== null) {
       const animTitle = data[0].title;
