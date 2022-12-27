@@ -12,8 +12,7 @@ function VideoControl(){
 
   function changeEpisode(data) {
     if (data !== null) {
-      console.log(data);
-      Global.setCurrentEpisodeTitle(data[0].title)
+     
       Global.setEpisodeId(data[0].video_id)
       
        if (data[0].locationsd !== null) {
