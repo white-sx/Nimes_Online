@@ -28,9 +28,13 @@ function VideoDescription({ animName }) {
       if (jsonData !== null) {
         setAnimeReleaseYear(jsonData[0].ano);
         Global.setDescription(jsonData[0].category_description);
+        localStorage.setItem("LocalDescription",jsonData[0].category_description)
+
         Global.setGenres(jsonData[0].category_genres);
+        localStorage.setItem("LocalGenres",jsonData[0].category_genres)
+        
         Global.setAnimeTitle(jsonData[0].category_name);
-        console.log(data)
+        localStorage.setItem("LocalAnimeTitle",jsonData[0].category_name)
       }
     }
 

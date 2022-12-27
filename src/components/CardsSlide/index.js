@@ -67,10 +67,7 @@ function CardsSlide() {
                   localStorage.setItem("animeId", e.target.id);
                   Global.setAnimeId(e.target.id);
                   localStorage.setItem("name", data.category_name);
-                  localStorage.setItem(
-                    "ImageUrl",
-                    e.target.getAttribute("src")
-                  );
+                 
                 }}
               >
                 <Card style={{ width: "90%" }} bg="dark" variant="dark">

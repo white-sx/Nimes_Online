@@ -32,11 +32,11 @@ function AnimePage() {
         >
           <Row>
             <Col md="auto">
-              <img src={localStorage.getItem("ImageUrl")} />
+              <img src={`https://cdn.appanimeplus.tk/img/${Global.idImage}`} />
             </Col>
             <Col style={{ marginTop: ".9rem" }}>
               <h1 style={{ color: "#FAD82D" }}>
-                {localStorage.getItem("name")}
+                {Global.animeTitle}
               </h1>
               <span
                 style={{

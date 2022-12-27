@@ -18,7 +18,7 @@ function Cards() {
             to="video"
             style={{ textDecoration: "none", color: "#f2f2f2" }}
             onClick={function (e) {
-              localStorage.setItem("ImageUrl", e.target.getAttribute("src"));
+              localStorage.setItem("ImageLocalId", data.category_image);
               Global.setEpisodeId(data.video_id);
               Global.setIdImage(data.category_image);
               localStorage.setItem("episodeAnimeIdLocal", data.video_id);
