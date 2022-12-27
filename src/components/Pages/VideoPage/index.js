@@ -23,8 +23,6 @@ function Video() {
 
     if (data !== null) {
       setLink(data[0].locationsd);
-      localStorage.setItem("epAnimId", data[0].video_id);
-      localStorage.setItem("AnimeNameForm", animTitleForm);
       Global.setCurrentEpisodeTitle(data[0].title);
       
     }

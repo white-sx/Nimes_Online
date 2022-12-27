@@ -15,7 +15,9 @@ function VideoDescription({ animName }) {
         "Content-Type": "application/json",
       },
     });
-    if (data !== null) Global.setAnimeId(data[0].id);
+    if (data !== null){ 
+      localStorage.setItem("epAnimId",data[0].id)
+      Global.setAnimeId(data[0].id);}
 
     async function description() {
       let response = await fetch(
@@ -28,6 +30,7 @@ function VideoDescription({ animName }) {
         Global.setDescription(jsonData[0].category_description);
         Global.setGenres(jsonData[0].category_genres);
         Global.setAnimeTitle(jsonData[0].category_name);
+        console.log(data)
       }
     }
 

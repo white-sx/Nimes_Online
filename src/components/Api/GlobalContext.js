@@ -6,7 +6,7 @@ export const GlobalContext = React.createContext();
 export const GlobalStorage = ({ children }) => {
   const { request, data, error, loading } = useFetch();
   const [episodeId, setEpisodeId] = useState(localStorage.getItem("episodeAnimeIdLocal"));
-  const [animeId, setAnimeId] = useState();
+  const [animeId, setAnimeId] = useState(localStorage.getItem("epAnimId"));
   const [currentEpisodeTitle, setCurrentEpisodeTitle] = useState();
   const [description, setDescription] = useState();
   const [genres, setGenres] = useState();

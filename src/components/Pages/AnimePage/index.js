@@ -9,14 +9,15 @@ function AnimePage() {
   const Global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-
-    request(`https://appanimeplus.tk/play-api.php?cat_id=${Global.animId}`, {
+  
+    request(`https://appanimeplus.tk/play-api.php?cat_id=${Global.animeId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-  }, [Global.animId, data]);
+  }, [ data]);
+  console.log(Global.animId)
   if (Global.genres === null && Global.description === null) return null;
   if(data !== null)
     return (

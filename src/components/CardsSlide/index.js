@@ -1,4 +1,3 @@
-import Carousel from "react-bootstrap/Carousel";
 import React from "react";
 import useFetch from "../Api/useFetch";
 import Card from "react-bootstrap/Card";
@@ -6,9 +5,11 @@ import Col from "react-bootstrap/Col";
 import { Ratio } from "react-bootstrap";
 
 import Slider from "react-slick";
+import { GlobalContext } from "../Api/GlobalContext";
 
 function CardsSlide() {
   const { request, data, error, loading } = useFetch();
+  const Global = React.useContext(GlobalContext);
 
   const settings = {
     dots: true,
@@ -64,6 +65,7 @@ function CardsSlide() {
                 style={{ textDecoration: "none", color: "#f2f2f2" }}
                 onClick={function (e) {
                   localStorage.setItem("animeId", e.target.id);
+                  Global.setAnimeId(e.target.id);
                   localStorage.setItem("name", data.category_name);
                   localStorage.setItem(
                     "ImageUrl",
