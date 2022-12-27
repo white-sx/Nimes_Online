@@ -7,7 +7,7 @@ import { HiArrowSmRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../Api/GlobalContext";
 
-function VideoControl() {
+function VideoControl(){ 
   const Global = React.useContext(GlobalContext);
 
   function changeEpisode(data) {
@@ -25,7 +25,7 @@ function VideoControl() {
       console.log("aqui");
     }
   }
-
+  }
   async function nextEpisode() {
     const responseData = await fetch(
       `https://appanimeplus.tk/play-api.php?episodios=${Global.episodeId}&catid=${Global.animeId}&next`
@@ -81,7 +81,6 @@ function VideoControl() {
       </Container>
     </>
   );
-}
 
 }
 export default VideoControl;
