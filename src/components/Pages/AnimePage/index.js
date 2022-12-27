@@ -16,8 +16,8 @@ function AnimePage() {
         "Content-Type": "application/json",
       },
     });
-  }, [ data]);
-  console.log(Global.animId)
+  }, [ Global, Request,data]);
+ 
   if (Global.genres === null && Global.description === null) return null;
   if(data !== null)
     return (

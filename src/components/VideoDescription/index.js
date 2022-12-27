@@ -46,7 +46,7 @@ function VideoDescription({ animName }) {
       Global.genres === null
     )
       return null;
-  }, [request, data, animName]);
+  }, [request, data, animName, Global]);
 
   return (
     <Container style={{ color: "white", marginTop: "1rem" }}>

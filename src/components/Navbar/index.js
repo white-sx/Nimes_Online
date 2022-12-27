@@ -9,23 +9,27 @@ import Logo from "../../assets/img/logo.png";
 import LogoNav from "../../assets/img/logoNav.png";
 import backgroundNav from "../../assets/img/backgroundNav.png";
 import Icon from "../../assets/img/search.svg";
+import { Link } from "react-router-dom";
+import { CloseButton } from "react-bootstrap";
 
 function NavbarH() {
+  
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+      <Navbar bg="dark" variant="dark" expand="lg"  fixed="top">
         <Container fluid>
           <Navbar.Brand>
-            <a href="/">
+            <Link to="/">
               <img style={{ maxWidth: "150px" }} src={Logo} />
-            </a>
+            </Link>
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-xll`} />
+          <Navbar.Toggle  aria-controls={`offcanvasNavbar-expand-xll`} />
           <Navbar.Offcanvas
             style={{
               background: `url(${backgroundNav})`,
               color: "#fff",
+              maxWidth:"70%",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
             }}
@@ -33,10 +37,12 @@ function NavbarH() {
             aria-labelledby={`offcanvasNavbarLabel-expand-xll`}
             placement="end"
           >
-            <Offcanvas.Header closeButton>
+            <Offcanvas.Header >
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-xll`}>
                 <img style={{ maxWidth: "80px" }} src={LogoNav} />
+                
               </Offcanvas.Title>
+              <CloseButton variant="white" style={{fontSize:"30px",float:"right"}}></CloseButton>
             </Offcanvas.Header>
             <div
               style={{
@@ -44,7 +50,8 @@ function NavbarH() {
                 borderRadius: "16px",
                 boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
                 backdropFilter: "blur(6.6px)",
-                
+               
+                margin: "0 auto",
                 border: "1px solid rgba(0, 0, 0, 0.53)",
                 paddingBottom: "1rem",
               }}
