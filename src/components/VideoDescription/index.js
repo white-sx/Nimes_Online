@@ -8,12 +8,21 @@ function VideoDescription({ animName }) {
   const Global = React.useContext(GlobalContext);
   const [animeReleaseYear, setAnimeReleaseYear] = useState();
 
- 
-
   React.useEffect(() => {
-    async function description(id) {
+    request(`https://appanimeplus.tk/play-api.php?search=${animName}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (data !== null) {
+      Global.setAnimeId(data[0].id);
+      localStorage.setItem("localEpAnimId", data[0].id);
+    }
+
+    async function description() {
       let response = await fetch(
-        `https://appanimeplus.tk/play-api.php?info=${id}`
+        `https://appanimeplus.tk/play-api.php?info=${Global.animeId}`
       );
       let jsonData = await response.json();
 
@@ -33,15 +42,16 @@ function VideoDescription({ animName }) {
       }
     }
 
-    description(Global.animeId);
-  }, [Global.animeId]);
+    description();
 
-  if (
-    Global.currentEpisodeTitle === null &&
-    Global.description === null &&
-    Global.genres === null
-  )
-    return null;
+    if (
+      Global.currentEpisodeTitle === null &&
+      Global.description === null &&
+      Global.genres === null
+    )
+      return null;
+  }, [request, data, animName, Global]);
+
   return (
     <Container style={{ color: "white", marginTop: "1rem" }}>
       <div style={{ display: "flex", alignItems: "center" }}>

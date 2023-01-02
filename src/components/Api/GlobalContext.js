@@ -4,17 +4,24 @@ import useFetch from "./useFetch";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const { request, data, error, loading } = useFetch();
-  const [episodeId, setEpisodeId] = useState();
-  const [animeId, setAnimeId] = useState();
+  const { request, data,setData, error, loading } = useFetch();
+  const [episodeId, setEpisodeId] = useState(
+    localStorage.getItem("episodeAnimeIdLocal")
+  );
+  const [animeId, setAnimeId] = useState(
+    localStorage.getItem("localEpAnimeId")
+  );
   const [currentEpisodeTitle, setCurrentEpisodeTitle] = useState();
-  const [description, setDescription] = useState();
-  const [genres, setGenres] = useState();
-  const [animeTitle, setAnimeTitle] = useState();
-  const [idImage, setIdImage] = useState();
+  const [description, setDescription] = useState(
+    localStorage.getItem("LocalDescription")
+  );
+  const [genres, setGenres] = useState(localStorage.getItem("LocalGenres"));
+  const [animeTitle, setAnimeTitle] = useState(
+    localStorage.getItem("LocalAnimeTitle")
+  );
+  const [idImage, setIdImage] = useState(localStorage.getItem("ImageLocalId"));
   const [streamEpisodeVideo, setStreamEpisodeVideo] = useState();
-  const [animeReleaseYear, setAnimeReleaseYear] = useState();
-  const [animeName, setAnimeName] = useState();
+
   React.useEffect(() => {
     request("https://appanimeplus.tk/play-api.php?latest", {
       method: "GET",
@@ -23,24 +30,11 @@ export const GlobalStorage = ({ children }) => {
       },
     });
   }, []);
-
-  React.useEffect(() => {
-    request(`https://appanimeplus.tk/play-api.php?search=${animeName}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(data)
-    if (data !== null) {
-      localStorage.setItem("epAnimId", data[0].id);
-      setAnimeId(data[0].id);
-    }
-  }, [animeName]);
   return (
     <GlobalContext.Provider
       value={{
         data,
+        setData,
         episodeId,
         setEpisodeId,
         currentEpisodeTitle,
@@ -57,9 +51,6 @@ export const GlobalStorage = ({ children }) => {
         setIdImage,
         streamEpisodeVideo,
         setStreamEpisodeVideo,
-        animeReleaseYear,
-        setAnimeReleaseYear,
-        setAnimeName,
       }}
     >
       {children}

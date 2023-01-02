@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -10,13 +11,31 @@ import LogoNav from "../../assets/img/logoNav.png";
 import backgroundNav from "../../assets/img/backgroundNav.png";
 import Icon from "../../assets/img/search.svg";
 import { Link } from "react-router-dom";
-import { CloseButton } from "react-bootstrap";
+import styles from "./Custom.module.css";
+import { GlobalContext } from "../Api/GlobalContext";
 
 function NavbarH() {
+  const Global = React.useContext(GlobalContext);
+  const [searchAnime, setSearchAnime] = React.useState("");
+
+  
+
+  async function onSearchAnime() {
+    const formAnimeName = searchAnime
+      .replace(/[^a-zA-Z 0-9]+/gm, "_")
+      .replace(/\s+/g, "_")
+      .replace(/.Ep[a-zA-Z]+...../gm, "")
+      .toLowerCase();
+    const response = await fetch(
+      `https://appanimeplus.tk/play-api.php?search=${formAnimeName}`
+    );
+    const data = await response.json();
+    console.log(data)
+  }
   
   return (
     <>
-      <Navbar bg="dark" variant="dark" expand="lg"  fixed="top">
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
         <Container fluid>
           <Navbar.Brand>
             <Link to="/">
@@ -24,38 +43,22 @@ function NavbarH() {
             </Link>
           </Navbar.Brand>
 
-          <Navbar.Toggle  aria-controls={`offcanvasNavbar-expand-xll`} />
+          <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-xll`} />
           <Navbar.Offcanvas
             style={{
               background: `url(${backgroundNav})`,
-              color: "#fff",
-              maxWidth:"70%",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
             }}
+            className={styles.backNav}
             id={`offcanvasNavbar-expand-xll`}
             aria-labelledby={`offcanvasNavbarLabel-expand-xll`}
             placement="end"
           >
-            <Offcanvas.Header >
+            <Offcanvas.Header closeButton closeVariant="white">
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-xll`}>
                 <img style={{ maxWidth: "80px" }} src={LogoNav} />
-                
               </Offcanvas.Title>
-              <CloseButton variant="white" style={{fontSize:"30px",float:"right"}}></CloseButton>
             </Offcanvas.Header>
-            <div
-              style={{
-                background: "rgba(0, 0, 0, 0.3)",
-                borderRadius: "16px",
-                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                backdropFilter: "blur(6.6px)",
-               
-                margin: "0 auto",
-                border: "1px solid rgba(0, 0, 0, 0.53)",
-                paddingBottom: "1rem",
-              }}
-            >
+            <div className={styles.glassEffectBack}>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/">Inicio</Nav.Link>
@@ -80,10 +83,18 @@ function NavbarH() {
                     placeholder="Buscar"
                     className="me-2"
                     aria-label="Search"
+                    value={searchAnime}
+                    onChange={(e) => {
+                      setSearchAnime(e.target.value);
+                    }}
                   />
                   <Button
                     style={{ border: "none", background: "#FAD82D" }}
                     className="text-white"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onSearchAnime();
+                    }}
                   >
                     <img src={Icon} />
                   </Button>

@@ -16,7 +16,7 @@ function AnimePage() {
         "Content-Type": "application/json",
       },
     });
-  }, [ Global.animeId]);
+  }, [ Global, Request,data]);
  
   if (Global.genres === null && Global.description === null) return null;
   if(data !== null)
