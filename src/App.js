@@ -16,29 +16,27 @@ import SearchResultPage from "./components/Pages/SearchResultPage";
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <header>
-          <Container>
-            <Row>
-              <Col lg={12}>
-                <GlobalStorage>
+      <GlobalStorage>
+        <BrowserRouter>
+          <header>
+            <Container>
+              <Row>
+                <Col lg={12}>
                   <NavbarH />
-                </GlobalStorage>
-              </Col>
-            </Row>
-          </Container>
-        </header>
-        <main style={{ overflow: "hidden" }}>
-          <GlobalStorage>
+                </Col>
+              </Row>
+            </Container>
+          </header>
+          <main style={{ overflow: "hidden" }}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="video" element={<Video />} />
               <Route path="anime" element={<AnimePage />} />
               <Route path="result" element={<SearchResultPage />} />
             </Routes>
-          </GlobalStorage>
-        </main>
-      </BrowserRouter>
+          </main>
+        </BrowserRouter>
+      </GlobalStorage>
     </>
   );
 }
