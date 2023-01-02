@@ -4,7 +4,7 @@ import useFetch from "./useFetch";
 export const GlobalContext = React.createContext();
 
 export const GlobalStorage = ({ children }) => {
-  const { request, data,setData, error, loading } = useFetch();
+  const { request, data, error, loading } = useFetch();
   const [episodeId, setEpisodeId] = useState(
     localStorage.getItem("episodeAnimeIdLocal")
   );
@@ -21,6 +21,7 @@ export const GlobalStorage = ({ children }) => {
   );
   const [idImage, setIdImage] = useState(localStorage.getItem("ImageLocalId"));
   const [streamEpisodeVideo, setStreamEpisodeVideo] = useState();
+  const [animeNameFormattedSearch, setAnimeNameFormattedSearch] = useState(localStorage.getItem("animeSearchName"));
 
   React.useEffect(() => {
     request("https://appanimeplus.tk/play-api.php?latest", {
@@ -30,11 +31,13 @@ export const GlobalStorage = ({ children }) => {
       },
     });
   }, []);
+
+ 
+
   return (
     <GlobalContext.Provider
       value={{
         data,
-        setData,
         episodeId,
         setEpisodeId,
         currentEpisodeTitle,
@@ -51,6 +54,8 @@ export const GlobalStorage = ({ children }) => {
         setIdImage,
         streamEpisodeVideo,
         setStreamEpisodeVideo,
+        animeNameFormattedSearch,
+        setAnimeNameFormattedSearch,
       }}
     >
       {children}

@@ -17,20 +17,17 @@ import { GlobalContext } from "../Api/GlobalContext";
 function NavbarH() {
   const Global = React.useContext(GlobalContext);
   const [searchAnime, setSearchAnime] = React.useState("");
-
+  const formAnimeName = searchAnime
+  .replace(/[^a-zA-Z 0-9]+/gm, "_")
+  .replace(/\s+/g, "_")
+  .replace(/.Ep[a-zA-Z]+...../gm, "")
+  .toLowerCase();
   
 
-  async function onSearchAnime() {
-    const formAnimeName = searchAnime
-      .replace(/[^a-zA-Z 0-9]+/gm, "_")
-      .replace(/\s+/g, "_")
-      .replace(/.Ep[a-zA-Z]+...../gm, "")
-      .toLowerCase();
-    const response = await fetch(
-      `https://appanimeplus.tk/play-api.php?search=${formAnimeName}`
-    );
-    const data = await response.json();
-    console.log(data)
+  function onSearchAnime(){
+    
+   Global.setAnimeNameFormattedSearch(formAnimeName)
+   localStorage.setItem("animeSearchName",formAnimeName)
   }
   
   return (
@@ -85,19 +82,23 @@ function NavbarH() {
                     aria-label="Search"
                     value={searchAnime}
                     onChange={(e) => {
+            
                       setSearchAnime(e.target.value);
                     }}
                   />
+                 <Link to={"/result"}>
                   <Button
                     style={{ border: "none", background: "#FAD82D" }}
                     className="text-white"
                     onClick={(e) => {
-                      e.preventDefault();
+                    
                       onSearchAnime();
+                      
                     }}
                   >
                     <img src={Icon} />
                   </Button>
+                  </Link>
                 </Form>
               </Offcanvas.Body>
             </div>

@@ -11,6 +11,7 @@ import Home from "./components/Pages/Home";
 import Video from "./components/Pages/VideoPage";
 import AnimePage from "./components/Pages/AnimePage";
 import { GlobalStorage } from "./components/Api/GlobalContext";
+import SearchResultPage from "./components/Pages/SearchResultPage";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           <Container>
             <Row>
               <Col lg={12}>
-                <NavbarH />
+                <GlobalStorage>
+                  <NavbarH />
+                </GlobalStorage>
               </Col>
             </Row>
           </Container>
@@ -31,6 +34,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="video" element={<Video />} />
               <Route path="anime" element={<AnimePage />} />
+              <Route path="result" element={<SearchResultPage />} />
             </Routes>
           </GlobalStorage>
         </main>
