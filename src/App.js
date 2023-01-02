@@ -10,9 +10,11 @@ import Col from "react-bootstrap/Col";
 import Home from "./components/Pages/Home";
 import Video from "./components/Pages/VideoPage";
 import AnimePage from "./components/Pages/AnimePage";
-import { GlobalStorage } from "./components/Api/GlobalContext";
+import { GlobalContext, GlobalStorage } from "./components/Api/GlobalContext";
+import useFetch from "./components/Api/useFetch";
 
 function App() {
+ 
   return (
     <>
       <BrowserRouter>

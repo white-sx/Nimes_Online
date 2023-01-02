@@ -53,7 +53,7 @@ function CardsSlide() {
         "Content-Type": "application/json",
       },
     });
-  }, [request, data]);
+  }, []);
 
   if (data !== null)
     return (
@@ -66,7 +66,7 @@ function CardsSlide() {
                 style={{ textDecoration: "none", color: "#f2f2f2" }}
                 onClick={function (e) {
                   
-                 console.log(data)
+                 
                   Global.setAnimeId(data.id);
                   Global.setIdImage(data.category_image)
                   Global.setAnimeTitle(data.category_name)

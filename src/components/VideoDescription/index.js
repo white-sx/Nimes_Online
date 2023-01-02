@@ -8,46 +8,40 @@ function VideoDescription({ animName }) {
   const Global = React.useContext(GlobalContext);
   const [animeReleaseYear, setAnimeReleaseYear] = useState();
 
-  React.useEffect(() => {
-    request(`https://appanimeplus.tk/play-api.php?search=${animName}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (data !== null){ 
-      localStorage.setItem("epAnimId",data[0].id)
-      Global.setAnimeId(data[0].id);}
+ 
 
-    async function description() {
+  React.useEffect(() => {
+    async function description(id) {
       let response = await fetch(
-        `https://appanimeplus.tk/play-api.php?info=${Global.animeId}`
+        `https://appanimeplus.tk/play-api.php?info=${id}`
       );
       let jsonData = await response.json();
 
       if (jsonData !== null) {
         setAnimeReleaseYear(jsonData[0].ano);
         Global.setDescription(jsonData[0].category_description);
-        localStorage.setItem("LocalDescription",jsonData[0].category_description)
+        localStorage.setItem(
+          "LocalDescription",
+          jsonData[0].category_description
+        );
 
         Global.setGenres(jsonData[0].category_genres);
-        localStorage.setItem("LocalGenres",jsonData[0].category_genres)
-        
+        localStorage.setItem("LocalGenres", jsonData[0].category_genres);
+
         Global.setAnimeTitle(jsonData[0].category_name);
-        localStorage.setItem("LocalAnimeTitle",jsonData[0].category_name)
+        localStorage.setItem("LocalAnimeTitle", jsonData[0].category_name);
       }
     }
 
-    description();
+    description(Global.animeId);
+  }, [Global.animeId]);
 
-    if (
-      Global.currentEpisodeTitle === null &&
-      Global.description === null &&
-      Global.genres === null
-    )
-      return null;
-  }, [request, data, animName, Global]);
-
+  if (
+    Global.currentEpisodeTitle === null &&
+    Global.description === null &&
+    Global.genres === null
+  )
+    return null;
   return (
     <Container style={{ color: "white", marginTop: "1rem" }}>
       <div style={{ display: "flex", alignItems: "center" }}>

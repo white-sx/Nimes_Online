@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import Container from "react-bootstrap/Container";
 import useFetch from "../../Api/useFetch";
@@ -13,29 +13,34 @@ function Video() {
   const Global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-    if (Global.episodeId === null ) return null;
-    request(`https://appanimeplus.tk/play-api.php?episodios=${Global.episodeId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    if (Global.episodeId === null) return null;
+    request(
+      `https://appanimeplus.tk/play-api.php?episodios=${Global.episodeId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (data !== null) {
-      setLink(data[0].locationsd);
+      setLink(data[0].location);
       Global.setCurrentEpisodeTitle(data[0].title);
-      
     }
-  }, [data, setLink]);
-  
+  }, [Global.episodeId, data]);
+
   function setTitleForm() {
     if (data !== null) {
       const animTitle = data[0].title;
-      animTitleForm = animTitle
-        .replace(/[^a-zA-Z 0-9]+/gm, "_")
-        .replace(/\s+/g, "_")
-        .replace(/.Ep[a-zA-Z]+...../gm, "")
-        .toLowerCase();
+
+      Global.setAnimeName(
+        animTitle
+          .replace(/[^a-zA-Z 0-9]+/gm, "_")
+          .replace(/\s+/g, "_")
+          .replace(/.Ep[a-zA-Z]+...../gm, "")
+          .toLowerCase()
+      );
     }
   }
 
