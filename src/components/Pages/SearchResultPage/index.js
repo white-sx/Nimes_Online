@@ -24,10 +24,10 @@ function SearchResultPage() {
     );
 
   }, [Global.animeNameFormattedSearch]);
-  if (data !== null && Global.loading !== null)
+  if (data !== null && loading !== null)
     return (
       <>
-        {Global.loading ? (
+        {loading ? (
           <SpinnerComponent />
         ) : (
           <>
