@@ -7,6 +7,7 @@ import { Ratio } from "react-bootstrap";
 import Slider from "react-slick";
 import { GlobalContext } from "../Api/GlobalContext";
 import { Link } from "react-router-dom";
+import SpinnerComponent from "../Spinner";
 
 function CardsSlide() {
   const { request, data, error, loading } = useFetch();
@@ -55,11 +56,11 @@ function CardsSlide() {
     });
   }, [request, data]);
 
-  if (data !== null)
+  if (data !== null && loading !== null)
     return (
       <>
         <Slider {...settings} style={{ marginLeft: ".3.5rem" }}>
-          {data.map((data, index) => (
+          {loading ? <SpinnerComponent/> : data.map((data, index) => (
             <Col key={index} xs={6} md={2}>
               <Link
                 to={"/anime"}
@@ -85,6 +86,7 @@ function CardsSlide() {
               </Link>
             </Col>
           ))}
+         
         </Slider>
       </>
     );
