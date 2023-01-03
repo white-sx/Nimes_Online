@@ -53,7 +53,7 @@ function CardsSlide() {
         "Content-Type": "application/json",
       },
     });
-  }, [request]);
+  }, []);
 
   if (data === null && loading === null) return null;
     return (
