@@ -3,9 +3,10 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../Api/GlobalContext";
 import useFetch from "../../Api/useFetch";
+import SpinnerComponent from "../../Spinner";
 
 function AnimePage() {
-  const { request, data } = useFetch();
+  const { request, data,loading,error } = useFetch();
   const Global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
@@ -16,10 +17,10 @@ function AnimePage() {
         "Content-Type": "application/json",
       },
     });
-  }, [ Global, Request,data]);
+  }, [ Global]);
  
   if (Global.genres === null && Global.description === null) return null;
-  if(data !== null)
+  if(data === null && loading === null) return null;
     return (
       <>
         <Container
@@ -63,7 +64,7 @@ function AnimePage() {
           </Row>
         </Container>
         <Container>
-          {data.map((item) => {
+          {loading ? <SpinnerComponent/>: data.map((item) => {
             return (
               <Link
                 to={"/video"}
@@ -85,6 +86,7 @@ function AnimePage() {
               </Link>
             );
           })}
+          
         </Container>
       </>
     );
