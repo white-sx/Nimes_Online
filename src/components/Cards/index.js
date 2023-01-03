@@ -4,15 +4,16 @@ import Col from "react-bootstrap/Col";
 import { Ratio } from "react-bootstrap";
 import { GlobalContext } from "../Api/GlobalContext";
 import { Link } from "react-router-dom";
+import SpinnerComponent from "../Spinner";
 
 function Cards() {
   const Global = React.useContext(GlobalContext);
 
-  if (Global.data === null) return null;
-
+  if (Global.data === null &&  Global.loading === null)  return null;
   return (
     <>
-      {Global.data.map((data, index) => (
+    {
+      Global.loading ? <SpinnerComponent/> :  Global.data.map((data, index) => (
         <Col key={index} xs={6} md={2}>
           <Link
             to="video"
@@ -47,6 +48,8 @@ function Cards() {
           </Link>
         </Col>
       ))}
+    
+     
     </>
   );
 }

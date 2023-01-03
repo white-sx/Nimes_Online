@@ -21,7 +21,9 @@ export const GlobalStorage = ({ children }) => {
   );
   const [idImage, setIdImage] = useState(localStorage.getItem("ImageLocalId"));
   const [streamEpisodeVideo, setStreamEpisodeVideo] = useState();
-  const [animeNameFormattedSearch, setAnimeNameFormattedSearch] = useState(localStorage.getItem("animeSearchName"));
+  const [animeNameFormattedSearch, setAnimeNameFormattedSearch] = useState(
+    localStorage.getItem("animeSearchName")
+  );
 
   React.useEffect(() => {
     request("https://appanimeplus.tk/play-api.php?latest", {
@@ -32,12 +34,12 @@ export const GlobalStorage = ({ children }) => {
     });
   }, []);
 
- 
-
   return (
     <GlobalContext.Provider
       value={{
         data,
+        error,
+        loading,
         episodeId,
         setEpisodeId,
         currentEpisodeTitle,
