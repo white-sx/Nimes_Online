@@ -3,7 +3,6 @@ import useFetch from "../Api/useFetch";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import { Ratio } from "react-bootstrap";
-
 import Slider from "react-slick";
 import { GlobalContext } from "../Api/GlobalContext";
 import { Link } from "react-router-dom";
