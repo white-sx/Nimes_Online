@@ -56,10 +56,13 @@ function CardsSlide() {
   }, []);
 
   if (data === null && loading === null) return null;
-    return (
-      <>
+  return (
+    <>
+      {loading ? (
+        <SpinnerComponent />
+      ) : (
         <Slider {...settings} style={{ marginLeft: ".3.5rem" }}>
-          {loading ? <SpinnerComponent/> : data.map((data, index) => (
+          {data.map((data, index) => (
             <Col key={index} xs={6} md={2}>
               <Link
                 to={"/anime"}
@@ -85,10 +88,10 @@ function CardsSlide() {
               </Link>
             </Col>
           ))}
-         
         </Slider>
-      </>
-    );
+      )}
+    </>
+  );
 }
 
 export default CardsSlide;
