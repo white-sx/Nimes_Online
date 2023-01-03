@@ -53,9 +53,9 @@ function CardsSlide() {
         "Content-Type": "application/json",
       },
     });
-  }, [request, data]);
+  }, [request]);
 
-  if (data !== null && loading !== null)
+  if (data === null && loading === null) return null;
     return (
       <>
         <Slider {...settings} style={{ marginLeft: ".3.5rem" }}>
