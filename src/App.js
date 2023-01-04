@@ -12,7 +12,7 @@ import Video from "./components/Pages/VideoPage";
 import AnimePage from "./components/Pages/AnimePage";
 import { GlobalStorage } from "./components/Api/GlobalContext";
 import SearchResultPage from "./components/Pages/SearchResultPage";
-import Sobre from "./components/Pages/Sobre";
+import Category from "./components/Pages/Category";
 
 function App() {
   return (
@@ -34,7 +34,7 @@ function App() {
               <Route path="video" element={<Video />} />
               <Route path="anime" element={<AnimePage />} />
               <Route path="result" element={<SearchResultPage />} />
-              <Route path="sobre" element={<Sobre />} />
+              <Route path="category" element={<Category />} />
             </Routes>
           </main>
         </BrowserRouter>

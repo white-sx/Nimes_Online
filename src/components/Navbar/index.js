@@ -60,7 +60,7 @@ function NavbarH() {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/">Inicio</Nav.Link>
-                  <Nav.Link href="sobre">Sobre</Nav.Link>
+                  <Nav.Link href="/category">Filmes</Nav.Link>
                   <NavDropdown
                     title="Categorias"
                     id={`offcanvasNavbarDropdown-expand-xll`}
