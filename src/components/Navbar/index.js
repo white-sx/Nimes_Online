@@ -23,10 +23,12 @@ function NavbarH() {
     .replace(/.Ep[a-zA-Z]+...../gm, "")
     .toLowerCase();
 
-  function onSearchAnime() {
+  function onSearchAnime(e) {
+    e.preventDefault();
     Global.setAnimeNameFormattedSearch(formAnimeName);
     localStorage.setItem("animeSearchName", formAnimeName);
     setSearchAnime("");
+    window.open("/result", "_self");
   }
 
   return (
@@ -73,7 +75,7 @@ function NavbarH() {
                     </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                <Form className="d-flex">
+                <Form className="d-flex" onSubmit={onSearchAnime}>
                   <Form.Control
                     type="text"
                     placeholder="Buscar"
@@ -84,17 +86,16 @@ function NavbarH() {
                       setSearchAnime(e.target.value);
                     }}
                   />
-                  <Link to={"/result"}>
-                    <Button
-                      style={{ border: "none", background: "#FAD82D" }}
-                      className="text-white"
-                      onClick={(e) => {
-                        onSearchAnime();
-                      }}
-                    >
-                      <img src={Icon} />
-                    </Button>
-                  </Link>
+
+                  <Button
+                    style={{ border: "none", background: "#FAD82D" }}
+                    className="text-white"
+                    onClick={(e) => {
+                      onSearchAnime();
+                    }}
+                  >
+                    <img src={Icon} />
+                  </Button>
                 </Form>
               </Offcanvas.Body>
             </div>
