@@ -10,6 +10,7 @@ function Highlights() {
       <Carousel.Item interval={3500}>
         <Ratio aspectRatio="21x9">
           <img
+          style={{borderRadius:"7px"}}
             className="d-block w-100"
             src={image1}
             alt="First slide"
@@ -20,6 +21,7 @@ function Highlights() {
       <Carousel.Item interval={3500}>
         <Ratio aspectRatio="21x9">
           <img
+          style={{borderRadius:"7px"}}
             className="d-block w-100"
             src={image2}
             alt="Second slide"
@@ -30,6 +32,7 @@ function Highlights() {
       <Carousel.Item interval={3500}>
         <Ratio aspectRatio="21x9">
           <img
+          style={{borderRadius:"7px"}}
             className="d-block w-100"
             src={image3}
             alt="Third slide"

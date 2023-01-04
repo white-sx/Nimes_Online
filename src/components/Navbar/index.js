@@ -44,7 +44,7 @@ function NavbarH() {
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-xll`} />
           <Navbar.Offcanvas
             style={{
-              background: `url(${backgroundNav})`,
+              background: "#1f221f",
             }}
             className={styles.backNav}
             id={`offcanvasNavbar-expand-xll`}
@@ -56,11 +56,11 @@ function NavbarH() {
                 <img style={{ maxWidth: "80px" }} src={LogoNav} />
               </Offcanvas.Title>
             </Offcanvas.Header>
-            <div className={styles.glassEffectBack}>
+            <div className={styles.menuMobile}>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/">Inicio</Nav.Link>
-                  <Nav.Link href="#action2">Sobre</Nav.Link>
+                  <Nav.Link href="sobre">Sobre</Nav.Link>
                   <NavDropdown
                     title="Categorias"
                     id={`offcanvasNavbarDropdown-expand-xll`}
@@ -75,7 +75,7 @@ function NavbarH() {
                     </NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                <Form className="d-flex" onSubmit={onSearchAnime}>
+                <Form className={`d-flex ${styles.fixBottom}`} onSubmit={onSearchAnime} >
                   <Form.Control
                     type="text"
                     placeholder="Buscar"

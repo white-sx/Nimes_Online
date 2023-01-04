@@ -1,30 +1,27 @@
 .backNav {
   color: #fff;
-  max-width: 70%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  max-width: 90%;
 }
 
-.glassEffectBack {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6.6px);
-  margin: 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.53);
-  padding-bottom: 1rem;
+.menuMobile {
+  margin: 2rem auto;
+  font-size: 1.3rem;
 }
 
-
+.fixBottom {
+  margin-top: 2rem;
+}
 
 @media (min-width: 992px) {
   .backNav {
     background: initial !important;
   }
-  .glassEffectBack {
-   background: initial ;
-   border: none;
-   box-shadow:initial;
-   margin:initial;
+  .menuMobile {
+    margin: initial;
+    font-size: initial;
+    margin: initial;
+  }
+  .fixBottom {
+    margin-top: initial;
   }
 }
