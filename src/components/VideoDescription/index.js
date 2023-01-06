@@ -50,7 +50,7 @@ function VideoDescription({ animName }) {
       Global.genres === null
     )
       return null;
-  }, [ animName]);
+  }, [ animName,Global.animeId]);
 
   return (
     <Container style={{ color: "white", marginTop: "1rem" }}>

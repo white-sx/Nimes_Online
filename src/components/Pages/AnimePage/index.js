@@ -6,65 +6,71 @@ import useFetch from "../../Api/useFetch";
 import SpinnerComponent from "../../Spinner";
 
 function AnimePage() {
-  const { request, data,loading,error } = useFetch();
+  const { request, data, loading, error } = useFetch();
   const Global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-  
     request(`https://appanimeplus.tk/play-api.php?cat_id=${Global.animeId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-  }, [ Global]);
- 
-  if (Global.genres === null && Global.description === null) return null;
-  if(data === null && loading === null) return null;
-    return (
-      <>
-        <Container
-          style={{
-            marginTop: "8rem",
-            color: "#fff",
-            borderBottom: "3px solid #FAD82D",
-            paddingBottom: "1rem",
-          }}
-        >
-          <Row>
-            <Col md="auto">
-              <img src={`https://cdn.appanimeplus.tk/img/${Global.idImage}`} />
-            </Col>
-            <Col style={{ marginTop: ".9rem" }}>
-              <h1 style={{ color: "#FAD82D" }}>
-                {Global.animeTitle}
-              </h1>
-              <span
-                style={{
-                  fontSize: " 0.875rem",
-                  color: " rgb(160, 160, 160)",
-                  display: "block",
-                  marginTop: "-10px",
-                }}
-              >
-                {Global.genres}
-              </span>
-              <div
-                style={{
-                  marginTop: "1rem",
-                  borderTop: "1px solid  rgb(76 76 76)",
-                  padding: "5px",
-                  fontSize: "1rem",
-                  lineHeight: "1.5rem",
-                }}
-              >
-                <p>{Global.description}</p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-        <Container>
-          {loading ? <SpinnerComponent/>: data.map((item) => {
+  }, [Global.animeId]);
+
+  if (
+    Global.genres === null &&
+    Global.description === null &&
+    data === null &&
+    loading === null
+  )
+    return null;
+
+  return (
+    <>
+      <Container
+        style={{
+          marginTop: "8rem",
+          color: "#fff",
+          borderBottom: "3px solid #FAD82D",
+          paddingBottom: "1rem",
+        }}
+      >
+        <Row>
+          <Col md="auto">
+            <img src={`https://cdn.appanimeplus.tk/img/${Global.idImage}`} />
+          </Col>
+          <Col style={{ marginTop: ".9rem" }}>
+            <h1 style={{ color: "#FAD82D" }}>{Global.animeTitle}</h1>
+            <span
+              style={{
+                fontSize: " 0.875rem",
+                color: " rgb(160, 160, 160)",
+                display: "block",
+                marginTop: "-10px",
+              }}
+            >
+              {Global.genres}
+            </span>
+            <div
+              style={{
+                marginTop: "1rem",
+                borderTop: "1px solid  rgb(76 76 76)",
+                padding: "5px",
+                fontSize: "1rem",
+                lineHeight: "1.5rem",
+              }}
+            >
+              <p>{Global.description}</p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        {loading ? (
+          <SpinnerComponent />
+        ) : (
+          data.map((item) => {
             return (
               <Link
                 to={"/video"}
@@ -85,11 +91,11 @@ function AnimePage() {
                 </Card>
               </Link>
             );
-          })}
-          
-        </Container>
-      </>
-    );
+          })
+        )}
+      </Container>
+    </>
+  );
 }
 
 export default AnimePage;

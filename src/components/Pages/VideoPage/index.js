@@ -22,7 +22,7 @@ function Video() {
     });
 
     if (data !== null) {
-      setLink(data[0].locationsd);
+      setLink(data[0].location);
       Global.setCurrentEpisodeTitle(data[0].title);
       
     }
@@ -43,7 +43,7 @@ function Video() {
   return (
     <>
       <Container style={{ marginTop: "8rem" }}>
-        <ReactPlayer onPause width={"100%"} controls={true} url={link} />
+        <ReactPlayer onPause={true} width={"100%"} controls={true} url={link} />
         <VideoControl />
       </Container>
       <Container>
