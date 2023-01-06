@@ -20,17 +20,8 @@ function Category() {
     });
   }, []);
 
-  let active = 2;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
 
-  if (data !== null)
+  if (data === null ) return null;
     return (
       <Container style={{ marginTop: "8rem" }}>
         <Label text="Filmes" />
@@ -49,9 +40,11 @@ function Category() {
                 <Link
                   to="/anime"
                   style={{ textDecoration: "none", color: "#f2f2f2" }}
-                  onClick={function (e) {
+                  onClick={function () {
                     Global.setAnimeId(data.id);
+                    localStorage.setItem("localEpAnimId", data.id);
                     Global.setIdImage(data.category_image);
+                    localStorage.setItem("ImageLocalId", data.category_image);
                     Global.setAnimeTitle(data.category_name);
                   }}
                 >
@@ -79,9 +72,7 @@ function Category() {
             ))
           )}
         </Row>
-        <div>
-          <Pagination>{items}</Pagination>
-        </div>
+        
       </Container>
     );
 }
