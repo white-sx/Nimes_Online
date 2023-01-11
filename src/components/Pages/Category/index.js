@@ -21,60 +21,62 @@ function Category() {
   }, []);
 
 
-  if (data === null ) return null;
-    return (
-      <Container style={{ marginTop: "8rem" }}>
-        <Label text="Filmes" />
-        <Row
-          style={{
-            borderTop: "3px solid #FAD82D",
-            padding: "5px 0px",
-            marginTop: ".5rem",
-          }}
-        >
-          {loading ? (
-            <SpinnerComponent />
-          ) : (
-            data.map((data, index) => (
-              <Col key={index} xs={6} md={2}>
-                <Link
-                  to="/anime"
-                  style={{ textDecoration: "none", color: "#f2f2f2" }}
-                  onClick={function () {
-                    Global.setAnimeId(data.id);
-                    localStorage.setItem("localEpAnimId", data.id);
-                    Global.setIdImage(data.category_image);
-                    localStorage.setItem("ImageLocalId", data.category_image);
-                    Global.setAnimeTitle(data.category_name);
+  
+
+  if (data === null) return null;
+  return (
+    <Container style={{ marginTop: "8rem" }}>
+      <Label text="Filmes" />
+      <Row
+        style={{
+          borderTop: "3px solid #FAD82D",
+          padding: "5px 0px",
+          marginTop: ".5rem",
+        }}
+      >
+        {loading ? (
+          <SpinnerComponent />
+        ) : (
+          data.map((data, index) => (
+            <Col key={index} xs={6} md={2}>
+              <Link
+                to="/anime"
+                style={{ textDecoration: "none", color: "#f2f2f2" }}
+                onClick={function () {
+                  Global.setAnimeId(data.id);
+                  localStorage.setItem("localEpAnimeId", data.id);
+                  Global.setIdImage(data.category_image);
+                  localStorage.setItem("ImageLocalId", data.category_image);
+                  Global.setAnimeTitle(data.category_name);
+                  localStorage.setItem("LocalAnimeTitle", data.category_name);
+                }}
+              >
+                <Card
+                  style={{
+                    width: "100%",
+                    height: "95%",
+                    backgroundColor: "#1f221f",
                   }}
+                  variant="dark"
                 >
-                  <Card
-                    style={{
-                      width: "100%",
-                      height: "95%",
-                      backgroundColor: "#1f221f",
-                    }}
-                    variant="dark"
-                  >
-                    <Ratio aspectRatio="1x1">
-                      <Card.Img
-                        src={`https://cdn.appanimeplus.tk/img/${data.category_image}`}
-                      />
-                    </Ratio>
-                    <Card.Body>
-                      <Card.Title style={{ fontSize: ".9rem", width: "100%" }}>
-                        {data.category_name}
-                      </Card.Title>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Col>
-            ))
-          )}
-        </Row>
-        
-      </Container>
-    );
+                  <Ratio aspectRatio="1x1">
+                    <Card.Img
+                      src={`https://cdn.appanimeplus.tk/img/${data.category_image}`}
+                    />
+                  </Ratio>
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: ".9rem", width: "100%" }}>
+                      {data.category_name}
+                    </Card.Title>
+                  </Card.Body>
+                </Card>
+              </Link>
+            </Col>
+          ))
+        )}
+      </Row>
+    </Container>
+  );
 }
 
 export default Category;

@@ -20,9 +20,9 @@ function VideoDescription({ animName }) {
       localStorage.setItem("localEpAnimId", data[0].id);
     }
 
-    async function description() {
+    async function description(animeId) {
       let response = await fetch(
-        `https://appanimeplus.tk/play-api.php?info=${Global.animeId}`
+        `https://appanimeplus.tk/play-api.php?info=${animeId}`
       );
       let jsonData = await response.json();
 
@@ -40,9 +40,11 @@ function VideoDescription({ animName }) {
         Global.setAnimeTitle(jsonData[0].category_name);
         localStorage.setItem("LocalAnimeTitle", jsonData[0].category_name);
       }
+      
     }
 
-    description();
+    description(Global.animeId);
+   
 
     if (
       Global.currentEpisodeTitle === null &&

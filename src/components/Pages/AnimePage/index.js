@@ -16,17 +16,43 @@ function AnimePage() {
         "Content-Type": "application/json",
       },
     });
+
+    async function description(animeId) {
+      let response = await fetch(
+        `https://appanimeplus.tk/play-api.php?info=${animeId}`
+      );
+      let jsonData = await response.json();
+
+      if (jsonData !== null) {
+        Global.setDescription(jsonData[0].category_description);
+        localStorage.setItem(
+          "LocalDescription",
+          jsonData[0].category_description
+        );
+
+        Global.setGenres(jsonData[0].category_genres);
+        localStorage.setItem("LocalGenres", jsonData[0].category_genres);
+
+        Global.setAnimeTitle(jsonData[0].category_name);
+        localStorage.setItem("LocalAnimeTitle", jsonData[0].category_name);
+      }
+      
+    }
+
+    description(Global.animeId);
+
+    if (
+      Global.currentEpisodeTitle === null &&
+      Global.description === null &&
+      Global.genres === null
+    )
+      return null;
   }, [Global.animeId]);
 
-  console.log(Global.genres)
-  if( Global.genres === null &&
-    Global.description === null && 
-    loading === null) return null;
-  if (
-  
-    data !== null 
-    
-  ) {
+  console.log(Global.description);
+  if (Global.genres === null && Global.description === null && loading === null)
+    return null;
+  if (data !== null) {
     return (
       <>
         <Container
@@ -51,9 +77,7 @@ function AnimePage() {
                   marginTop: "-10px",
                 }}
               >
-                {Global.genres
-              
-                }
+                {Global.genres}
               </span>
               <div
                 style={{
