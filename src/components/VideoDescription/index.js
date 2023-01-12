@@ -7,6 +7,7 @@ function VideoDescription({ animName }) {
   const { request, data } = useFetch();
   const Global = React.useContext(GlobalContext);
   const [animeReleaseYear, setAnimeReleaseYear] = useState();
+  const [localData, setLocalData] = useState();
 
   React.useEffect(() => {
     if (Global.animeId !== null) {
@@ -17,11 +18,20 @@ function VideoDescription({ animName }) {
         },
       });
 
-      if (data !== null) Global.setGenres(data[0].category_genres);
-      setAnimeReleaseYear(data[0].ano);
-      Global.setAnimeTitle(data[0].category_name);
+      if (data !== null) setLocalData(...data);
+
+      setInfos()
     }
-  }, [Global.animeId]);
+  }, [Global.animeId, setInfos]);
+
+  function setInfos() {
+    if (localData !== undefined) {
+      Global.setDescription(localData.category_description);
+      Global.setGenres(localData.category_genres);
+      setAnimeReleaseYear(localData.ano);
+      Global.setAnimeTitle(localData.category_name);
+    }
+  }
 
   if (
     Global.animeTitle === null &&
