@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import { GlobalContext } from "../Api/GlobalContext";
 import useFetch from "../Api/useFetch";
 
-function VideoDescription({ animName }) {
+function VideoDescription({ visibility }) {
   const { request, data } = useFetch();
   const Global = React.useContext(GlobalContext);
   const [animeReleaseYear, setAnimeReleaseYear] = useState();
@@ -30,6 +30,9 @@ function VideoDescription({ animName }) {
       Global.setGenres(localData.category_genres);
       setAnimeReleaseYear(localData.ano);
       Global.setAnimeTitle(localData.category_name);
+      localStorage.setItem("LocalDescription",localData.category_description)
+      localStorage.setItem("LocalGenres",localData.category_genres)
+      localStorage.setItem("LocalAnimeTitle",localData.category_name)
     }
   }
 
@@ -41,7 +44,7 @@ function VideoDescription({ animName }) {
     return null;
 
   return (
-    <Container style={{ color: "white", marginTop: "1rem" }}>
+    <Container style={{ color: "white", marginTop: "1rem", display:`${visibility}` }}>
       <div style={{ display: "flex", alignItems: "center" }}>
         <div
           style={{

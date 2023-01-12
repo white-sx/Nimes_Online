@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { GlobalContext } from "../../Api/GlobalContext";
 import useFetch from "../../Api/useFetch";
 import SpinnerComponent from "../../Spinner";
+import VideoDescription from "../../VideoDescription";
 
 function AnimePage() {
   const { request, data, loading, error } = useFetch();
@@ -23,7 +24,7 @@ function AnimePage() {
   if (data !== null) {
     return (
       <>
-        <Container
+         <Container
           style={{
             marginTop: "8rem",
             color: "#fff",
@@ -31,6 +32,7 @@ function AnimePage() {
             paddingBottom: "1rem",
           }}
         >
+          <VideoDescription visibility="none"/>
           <Row>
             <Col md="auto">
               <img src={`https://cdn.appanimeplus.tk/img/${Global.idImage}`} />
@@ -58,6 +60,7 @@ function AnimePage() {
               >
                 <p>{Global.description}</p>
               </div>
+              
             </Col>
           </Row>
         </Container>
@@ -67,6 +70,7 @@ function AnimePage() {
           ) : (
             data.map((item) => {
               return (
+
                 <Link
                   to={"/video"}
                   style={{
@@ -85,10 +89,12 @@ function AnimePage() {
                     </Card.Body>
                   </Card>
                 </Link>
+              
               );
             })
           )}
         </Container>
+        
       </>
     );
   }
