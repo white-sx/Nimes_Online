@@ -23,7 +23,7 @@ function SearchResultPage() {
       }
     );
   }, [Global.animeNameFormattedSearch]);
-  if (data !== null && loading !== null)
+  if (data === null && loading === null) return null;
     return (
       <>
         <Container style={{ marginTop: "7rem" }}>
