@@ -9,33 +9,27 @@ function VideoDescription({ animName }) {
   const [animeReleaseYear, setAnimeReleaseYear] = useState();
 
   React.useEffect(() => {
-    if(Global.animeId !== null)
-    request(`https://appanimeplus.tk/play-api.php?info=${Global.animeId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    if (Global.animeId !== null) {
+      request(`https://appanimeplus.tk/play-api.php?info=${Global.animeId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (data !== null) {
+      if (data !== null) Global.setGenres(data[0].category_genres);
       setAnimeReleaseYear(data[0].ano);
-      Global.setDescription(data[0].category_description);
-      localStorage.setItem("LocalDescription", data[0].category_description);
-
-      Global.setGenres(data[0].category_genres);
-      localStorage.setItem("LocalGenres", data[0].category_genres);
-
       Global.setAnimeTitle(data[0].category_name);
-      localStorage.setItem("LocalAnimeTitle", data[0].category_name);
     }
   }, [Global.animeId]);
 
   if (
-    Global.currentEpisodeTitle === null &&
-    Global.description === null &&
-    Global.genres === null
+    Global.animeTitle === null &&
+    Global.genres === null &&
+    animeReleaseYear === null
   )
     return null;
+
   return (
     <Container style={{ color: "white", marginTop: "1rem" }}>
       <div style={{ display: "flex", alignItems: "center" }}>

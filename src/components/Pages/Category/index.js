@@ -5,7 +5,7 @@ import { GlobalContext } from "../../Api/GlobalContext";
 import useFetch from "../../Api/useFetch";
 import Label from "../../Overlay";
 import SpinnerComponent from "../../Spinner";
-import Pagination from "react-bootstrap/Pagination";
+
 
 function Category() {
   const Global = React.useContext(GlobalContext);
