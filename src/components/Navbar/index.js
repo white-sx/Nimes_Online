@@ -105,7 +105,7 @@ function NavbarH() {
                   <Form.Control
                     type="text"
                     placeholder="Buscar"
-                    className="me-2"
+                    className={`me-2 `}
                     aria-label="Search"
                     value={searchAnime}
                     onChange={(e) => {
@@ -116,9 +116,7 @@ function NavbarH() {
                   <Button
                     style={{ border: "none", background: "#FAD82D" }}
                     className="text-white"
-                    onClick={(e) => {
-                      onSearchAnime();
-                    }}
+                    onClick={onSearchAnime}
                   >
                     <img src={Icon} />
                   </Button>
