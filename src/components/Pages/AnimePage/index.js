@@ -49,7 +49,7 @@ function AnimePage() {
       return null;
   }, [Global.animeId]);
 
-  console.log(Global.description);
+  
   if (Global.genres === null && Global.description === null && loading === null)
     return null;
   if (data !== null) {

@@ -44,7 +44,7 @@ function Category() {
                 style={{ textDecoration: "none", color: "#f2f2f2" }}
                 onClick={function () {
                   Global.setAnimeId(data.id);
-                  localStorage.setItem("localEpAnimeId", data.id);
+                  localStorage.setItem("localAnimeId", data.id);
                   Global.setIdImage(data.category_image);
                   localStorage.setItem("ImageLocalId", data.category_image);
                   Global.setAnimeTitle(data.category_name);

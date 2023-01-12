@@ -9,7 +9,7 @@ export const GlobalStorage = ({ children }) => {
     localStorage.getItem("episodeAnimeIdLocal")
   );
   const [animeId, setAnimeId] = useState(
-    localStorage.getItem("localEpAnimeId")
+    localStorage.getItem("localAnimeId")
   );
   const [currentEpisodeTitle, setCurrentEpisodeTitle] = useState();
   const [description, setDescription] = useState(
