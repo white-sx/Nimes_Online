@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import { Container, Ratio, Row } from "react-bootstrap";
-
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../Api/GlobalContext";
 import useFetch from "../../Api/useFetch";
@@ -22,8 +21,11 @@ function SearchResultPage() {
         },
       }
     );
+   
   }, [Global.animeNameFormattedSearch]);
+  
   if (data === null && loading === null) return null;
+ 
     return (
       <>
         <Container style={{ marginTop: "7rem" }}>
@@ -35,7 +37,7 @@ function SearchResultPage() {
         </Container>
         <Container style={{ marginTop: "3rem" }}>
           <Row>
-            {loading ? (
+            {/* {loading ? (
               <SpinnerComponent />
             ) : (
               data.map((data, index) => (
@@ -73,7 +75,7 @@ function SearchResultPage() {
                   </Link>
                 </Col>
               ))
-            )}
+            )} */}
           </Row>
         </Container>
       </>

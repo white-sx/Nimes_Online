@@ -13,7 +13,7 @@ export const GlobalStorage = ({ children }) => {
   const [animeTitle, setAnimeTitle] = useState(localStorage.getItem("LocalAnimeTitle"));
   const [idImage, setIdImage] = useState(localStorage.getItem("ImageLocalId"));
   const [streamEpisodeVideo, setStreamEpisodeVideo] = useState();
-  const [animeNameFormattedSearch, setAnimeNameFormattedSearch] = useState();
+  const [animeNameFormattedSearch, setAnimeNameFormattedSearch] = useState(localStorage.getItem("animeSearchName"));
   const [category, setCategory] = useState();
 
   React.useEffect(() => {
