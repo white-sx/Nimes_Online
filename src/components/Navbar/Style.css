@@ -24,6 +24,21 @@ li{
    
 }
 
-.active{
+a .active {
     border-bottom: 2px solid rgb(250 216 45);
+  }
+
+  
+@media (min-width: 992px) {
+    .backNav {
+      background: initial !important;
+    }
+    .menuMobile {
+      margin: initial;
+      font-size: initial;
+      margin: initial;
+    }
+    .fixBottom {
+      margin-top: initial;
+    }
   }
