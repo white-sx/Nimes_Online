@@ -68,7 +68,12 @@ function CardsSlide() {
                 to={"/anime"}
                 style={{ textDecoration: "none", color: "#f2f2f2" }}
                 onClick={function (e) {
-                
+                  Global.setAnimeId(data.id);
+                  localStorage.setItem("localEpAnimeId", data.id);
+                  Global.setAnimeTitle(data.category_name);
+                  localStorage.setItem("LocalAnimeTitle", data.category_name);
+                  Global.setIdImage(data.category_image);
+                  localStorage.setItem("ImageLocalId", data.category_image);
                 }}
               >
                 <Card style={{ width: "90%" }} bg="dark" variant="dark">
