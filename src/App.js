@@ -34,7 +34,8 @@ function App() {
               <Route path="video" element={<Video />} />
               <Route path="anime" element={<AnimePage />} />
               <Route path="result" element={<SearchResultPage />} />
-              <Route path="category" element={<Category />} />
+              <Route path="filmes" element={<Category />} />
+              <Route path="dublados" element={<Category />} />
             </Routes>
           </main>
         </BrowserRouter>

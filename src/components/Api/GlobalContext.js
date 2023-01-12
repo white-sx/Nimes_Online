@@ -24,6 +24,9 @@ export const GlobalStorage = ({ children }) => {
   const [animeNameFormattedSearch, setAnimeNameFormattedSearch] = useState(
     localStorage.getItem("animeSearchName")
   );
+  const [category, setCategory] = useState(
+    localStorage.getItem("localCategory")
+  );
 
   React.useEffect(() => {
     request("https://appanimeplus.tk/play-api.php?latest", {
@@ -58,6 +61,8 @@ export const GlobalStorage = ({ children }) => {
         setStreamEpisodeVideo,
         animeNameFormattedSearch,
         setAnimeNameFormattedSearch,
+        category,
+        setCategory,
       }}
     >
       {children}

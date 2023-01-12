@@ -12,21 +12,21 @@ function Category() {
   const { request, data, error, loading } = useFetch();
 
   React.useEffect(() => {
-    request("https://appanimeplus.tk/play-api.php?categoria=filme", {
+    request(`https://appanimeplus.tk/play-api.php?categoria=${Global.category}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-  }, []);
+  }, [Global.category]);
 
 
-  
 
-  if (data === null) return null;
+
+  if (data === null && loading === null) return null;
   return (
     <Container style={{ marginTop: "8rem" }}>
-      <Label text="Filmes" />
+      <Label text={`${Global.category}s`} />
       <Row
         style={{
           borderTop: "3px solid #FAD82D",
