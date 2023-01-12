@@ -37,7 +37,7 @@ function SearchResultPage() {
         </Container>
         <Container style={{ marginTop: "3rem" }}>
           <Row>
-            {/* {loading ? (
+            {loading ? (
               <SpinnerComponent />
             ) : (
               data.map((data, index) => (
@@ -75,7 +75,7 @@ function SearchResultPage() {
                   </Link>
                 </Col>
               ))
-            )} */}
+            )} 
           </Row>
         </Container>
       </>
