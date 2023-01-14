@@ -28,7 +28,7 @@ function Video() {
       setLink(data[0].location);
       Global.setCurrentEpisodeTitle(data[0].title);
     }
-  }, [ setLink,Global.setCurrentEpisodeTitle,Global.episodeId,data]);
+  }, [Global,setLink]);
 
   async function setTitleForm() {
     if (data !== null) {

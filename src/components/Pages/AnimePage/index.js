@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../Api/GlobalContext";
@@ -17,7 +17,7 @@ function AnimePage() {
         "Content-Type": "application/json",
       },
     });
-  }, [Global.animeId]);
+  }, [Global]);
 
   if (Global.genres === null && Global.description === null && loading === null)
     return null;

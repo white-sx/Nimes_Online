@@ -22,7 +22,7 @@ function SearchResultPage() {
       }
     );
    
-  }, [Global.animeNameFormattedSearch]);
+  }, [Global]);
   
   if (data === null && loading === null) return null;
  

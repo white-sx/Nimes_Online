@@ -18,7 +18,7 @@ function Category() {
         "Content-Type": "application/json",
       },
     });
-  }, [Global.category]);
+  }, [Global]);
 
 
 
