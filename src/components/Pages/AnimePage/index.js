@@ -38,7 +38,7 @@ function AnimePage() {
               <img src={`https://cdn.appanimeplus.tk/img/${Global.idImage}`} />
             </Col>
             <Col style={{ marginTop: ".9rem" }}>
-              <h1 style={{ color: "#FAD82D" }}>{Global.animeTitle}</h1>
+              <h1 style={{ color: "#FAD82D" }}>{Global.animeTitle ? Global.animeTitle : localStorage.getItem("LocalAnimeTitle")}</h1>
               <span
                 style={{
                   fontSize: " 0.875rem",
