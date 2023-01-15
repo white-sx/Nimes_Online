@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { GlobalContext } from "../Api/GlobalContext";
 import useFetch from "../Api/useFetch";
 
+
 function VideoDescription({ visibility }) {
   const { request, data } = useFetch();
   const Global = React.useContext(GlobalContext);
@@ -60,7 +61,7 @@ function VideoDescription({ visibility }) {
               textTransform: "capitalize",
             }}
           >
-            {Global.animeTitle}
+            {Global.animeTitle ? Global.animeTitle : localStorage.getItem("LocalAnimeTitle")}
           </span>
         </div>
         <div>

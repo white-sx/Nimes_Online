@@ -11,7 +11,7 @@ function AnimePage() {
   const Global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-    request(`https://appanimeplus.tk/play-api.php?cat_id=${Global.animeId ? Global.animeId : localStorage.getItem("localAnimeId")}`, {
+    request(`https://appanimeplus.tk/play-api.php?cat_id=${Global.animeId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

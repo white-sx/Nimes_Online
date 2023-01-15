@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import { Container, Ratio, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+
 import { GlobalContext } from "../../Api/GlobalContext";
 import useFetch from "../../Api/useFetch";
 import SpinnerComponent from "../../Spinner";
@@ -13,7 +13,7 @@ function SearchResultPage() {
 
   React.useEffect(() => {
     request(
-      `https://appanimeplus.tk/play-api.php?search=${Global.animeNameFormattedSearch}`,
+      `https://appanimeplus.tk/play-api.php?search=${Global.animeNameFormattedSearch ?Global.animeNameFormattedSearch:localStorage.getItem("animeSearchName")}`,
       {
         method: "GET",
         headers: {
@@ -47,8 +47,11 @@ function SearchResultPage() {
                     style={{ textDecoration: "none", color: "#f2f2f2" }}
                     onClick={function (e) {
                       Global.setAnimeId(data.id);
-                      Global.setIdImage(data.category_image);
+                      localStorage.setItem("localAnimeId", data.id);
                       Global.setAnimeTitle(data.category_name);
+                      localStorage.setItem("LocalAnimeTitle", data.category_name);
+                      Global.setIdImage(data.category_image);
+                      localStorage.setItem("ImageLocalId", data.category_image);
                     }}
                   >
                     <Card

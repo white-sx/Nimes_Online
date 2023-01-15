@@ -7,15 +7,12 @@ import { HiArrowSmRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../Api/GlobalContext";
 
-function VideoControl(){ 
+function VideoControl() {
   const Global = React.useContext(GlobalContext);
 
   function changeEpisode(data) {
     if (data === null) return null;
-      Global.setEpisodeId(data[0].video_id)
-      
-       console.log("controller")
-  
+    Global.setEpisodeId(data[0].video_id);
   }
   async function nextEpisode() {
     const responseData = await fetch(
@@ -47,8 +44,8 @@ function VideoControl(){
               <HiArrowSmLeft />
             </h3>
           </Button>
-          <a
-           href={"/anime"}
+          <Link
+            to={"/anime"}
             style={{
               color: "#6c757d",
               textDecoration: "none",
@@ -62,7 +59,7 @@ function VideoControl(){
             >
               Todos os Episódios
             </Button>
-          </a>
+          </Link>
           <Button variant="outline-secondary" onClick={nextEpisode}>
             <h3>
               <HiArrowSmRight />
@@ -72,7 +69,5 @@ function VideoControl(){
       </Container>
     </>
   );
-
 }
 export default VideoControl;
-
