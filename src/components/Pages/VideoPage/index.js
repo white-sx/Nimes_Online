@@ -13,25 +13,26 @@ function Video() {
   const Global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-    if (Global.episodeId === null) return null;
-    request(
-      `https://appanimeplus.tk/play-api.php?episodios=${Global.episodeId}`,
-      {
+    function callInfos(id) {
+      if (Global.episodeId === null) return null;
+      request(`https://appanimeplus.tk/play-api.php?episodios=${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
-      }
-    );
+      });
 
-    if (data !== null) {
-      setLink(data[0].location);
-      Global.setCurrentEpisodeTitle(data[0].title);
+      if (data !== null) {
+        setLink(data[0].location);
+      }
     }
+
+    callInfos(Global.episodeId);
   }, [Global,setLink]);
 
   async function setTitleForm() {
     if (data !== null) {
+      Global.setCurrentEpisodeTitle(data[0].title);
       const animTitle = data[0].title;
       animTitleForm = animTitle
         .replace(/[^a-zA-Z 0-9]+/gm, "_")
@@ -39,12 +40,12 @@ function Video() {
         .replace(/.Ep[a-zA-Z]+...../gm, "")
         .toLowerCase();
     }
-    
+
     let response = await fetch(
       `https://appanimeplus.tk/play-api.php?search=${animTitleForm}`
     );
     let jsonData = await response.json();
-    
+
     if (jsonData !== null) {
       Global.setAnimeId(jsonData[0].id);
       localStorage.setItem("localAnimId", jsonData[0].id);

@@ -71,7 +71,7 @@ function VideoDescription({ visibility }) {
       <h2 style={{ fontSize: "1.375rem" }}>{Global.currentEpisodeTitle}</h2>
       <h3 style={{ fontSize: ".875rem", color: "#a0a0a0" }}>
         {" "}
-        {Global.genres}
+        {Global.genres ? Global.genres : localStorage.getItem("LocalGenres")}
       </h3>
     </Container>
   );

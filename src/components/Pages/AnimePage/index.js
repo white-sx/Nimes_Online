@@ -11,13 +11,13 @@ function AnimePage() {
   const Global = React.useContext(GlobalContext);
 
   React.useEffect(() => {
-    request(`https://appanimeplus.tk/play-api.php?cat_id=${Global.animeId}`, {
+    request(`https://appanimeplus.tk/play-api.php?cat_id=${Global.animeId ? Global.animeId : localStorage.getItem("localAnimeId")}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-  }, [Global]);
+  }, [Global.animeId]);
 
   if (Global.genres === null && Global.description === null && loading === null)
     return null;
@@ -35,7 +35,7 @@ function AnimePage() {
           <VideoDescription visibility="none"/>
           <Row>
             <Col md="auto">
-              <img src={`https://cdn.appanimeplus.tk/img/${Global.idImage}`} />
+              <img src={`https://cdn.appanimeplus.tk/img/${Global.idImage ? Global.idImage : localStorage.getItem("ImageLocalId")}`} />
             </Col>
             <Col style={{ marginTop: ".9rem" }}>
               <h1 style={{ color: "#FAD82D" }}>{Global.animeTitle ? Global.animeTitle : localStorage.getItem("LocalAnimeTitle")}</h1>
@@ -47,7 +47,7 @@ function AnimePage() {
                   marginTop: "-10px",
                 }}
               >
-                {Global.genres}
+                {Global.genres ? Global.genres : localStorage.getItem("LocalGenres")}
               </span>
               <div
                 style={{
@@ -58,7 +58,7 @@ function AnimePage() {
                   lineHeight: "1.5rem",
                 }}
               >
-                <p>{Global.description}</p>
+                <p>{Global.description ?Global.description : localStorage.getItem("LocalDescription")}</p>
               </div>
               
             </Col>

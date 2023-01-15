@@ -37,9 +37,9 @@ function NavbarH() {
       <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
         <Container fluid>
           <Navbar.Brand>
-            <Link to="/">
+            <a href="/">
               <img style={{ maxWidth: "150px" }} src={Logo} />
-            </Link>
+            </a>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-xll`} />

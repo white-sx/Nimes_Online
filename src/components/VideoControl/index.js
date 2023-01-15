@@ -11,19 +11,11 @@ function VideoControl(){
   const Global = React.useContext(GlobalContext);
 
   function changeEpisode(data) {
-    if (data !== null) {
-     
+    if (data === null) return null;
       Global.setEpisodeId(data[0].video_id)
       
-       if (data[0].locationsd !== null) {
-        Global.setStreamEpisodeVideo(data[0].locationsd)
-      // } else {
-        Global.setStreamEpisodeVideo(data[0].location)
-      // }
-    } else {
-      console.log("aqui");
-    }
-  }
+       console.log("controller")
+  
   }
   async function nextEpisode() {
     const responseData = await fetch(
@@ -55,8 +47,8 @@ function VideoControl(){
               <HiArrowSmLeft />
             </h3>
           </Button>
-          <Link
-            to={"/anime"}
+          <a
+           href={"/anime"}
             style={{
               color: "#6c757d",
               textDecoration: "none",
@@ -70,7 +62,7 @@ function VideoControl(){
             >
               Todos os Episódios
             </Button>
-          </Link>
+          </a>
           <Button variant="outline-secondary" onClick={nextEpisode}>
             <h3>
               <HiArrowSmRight />

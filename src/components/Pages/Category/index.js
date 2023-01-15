@@ -39,8 +39,8 @@ function Category() {
         ) : (
           data.map((data, index) => (
             <Col key={index} xs={6} md={2}>
-              <Link
-                to="/anime"
+              <a
+                href="/anime"
                 style={{ textDecoration: "none", color: "#f2f2f2" }}
                 onClick={function () {
                   Global.setAnimeId(data.id);
@@ -70,7 +70,7 @@ function Category() {
                     </Card.Title>
                   </Card.Body>
                 </Card>
-              </Link>
+              </a>
             </Col>
           ))
         )}
