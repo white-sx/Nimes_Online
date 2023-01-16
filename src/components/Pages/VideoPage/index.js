@@ -58,7 +58,7 @@ function Video() {
   return (
     <>
       <Container style={{ marginTop: "8rem" }}>
-        <ReactPlayer onPause width={"100%"} controls={true} url={link} />
+        <ReactPlayer playing={false} width={"100%"} controls={true} url={link} />
         <VideoControl />
       </Container>
       <Container>
