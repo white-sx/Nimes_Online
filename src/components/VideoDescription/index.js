@@ -23,10 +23,11 @@ function VideoDescription({ visibility,animName}) {
 
       setInfos()
     }
-  }, [Global.animeId]);
+  }, [Global.animeId,setInfos]);
 
   function setInfos() {
     if (localData !== undefined) {
+      console.log(data)
       Global.setDescription(localData.category_description);
       Global.setGenres(localData.category_genres);
       setAnimeReleaseYear(localData.ano);
@@ -36,13 +37,8 @@ function VideoDescription({ visibility,animName}) {
       localStorage.setItem("LocalAnimeTitle",localData.category_name)
     }
   }
-
-  if (
-    Global.animeTitle === null &&
-    Global.genres === null &&
-    animeReleaseYear === null
-  )
-    return null;
+ 
+if(data !== null)
 
   return (
     <Container style={{ color: "white", marginTop: "1rem", display:`${visibility}` }}>
@@ -61,7 +57,7 @@ function VideoDescription({ visibility,animName}) {
               textTransform: "capitalize",
             }}
           >
-            {Global.animeTitle ? Global.animeTitle : localStorage.getItem("LocalAnimeTitle")}
+            {data[0].category_name}
           </span>
         </div>
         <div>
@@ -72,7 +68,7 @@ function VideoDescription({ visibility,animName}) {
       <h2 style={{ fontSize: "1.375rem" }}>{Global.currentEpisodeTitle}</h2>
       <h3 style={{ fontSize: ".875rem", color: "#a0a0a0" }}>
         {" "}
-        {Global.genres ? Global.genres : localStorage.getItem("LocalGenres")}
+        {data[0].category_genres}
       </h3>
     </Container>
   );
