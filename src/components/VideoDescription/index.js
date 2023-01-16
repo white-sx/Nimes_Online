@@ -27,7 +27,7 @@ function VideoDescription({ visibility,animName}) {
 
   function setInfos() {
     if (localData !== undefined) {
-      console.log(data)
+      
       Global.setDescription(localData.category_description);
       Global.setGenres(localData.category_genres);
       setAnimeReleaseYear(localData.ano);
