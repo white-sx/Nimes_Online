@@ -47,6 +47,7 @@ function Video() {
     let jsonData = await response.json();
 
     if (jsonData !== null) {
+      console.log(data)
       Global.setAnimeId(jsonData[0].id);
       localStorage.setItem("localAnimId", jsonData[0].id);
     }

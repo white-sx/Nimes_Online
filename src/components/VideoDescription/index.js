@@ -4,7 +4,7 @@ import { GlobalContext } from "../Api/GlobalContext";
 import useFetch from "../Api/useFetch";
 
 
-function VideoDescription({ visibility }) {
+function VideoDescription({ visibility,animName}) {
   const { request, data } = useFetch();
   const Global = React.useContext(GlobalContext);
   const [animeReleaseYear, setAnimeReleaseYear] = useState();
@@ -23,7 +23,7 @@ function VideoDescription({ visibility }) {
 
       setInfos()
     }
-  }, [Global.animeId, setInfos]);
+  }, [Global.animeId]);
 
   function setInfos() {
     if (localData !== undefined) {
@@ -61,7 +61,7 @@ function VideoDescription({ visibility }) {
               textTransform: "capitalize",
             }}
           >
-            {Global.animeTitle ? Global.animeTitle : localStorage.getItem("LocalAnimeTitle")}
+            {Global.animeTitle}
           </span>
         </div>
         <div>
@@ -72,7 +72,7 @@ function VideoDescription({ visibility }) {
       <h2 style={{ fontSize: "1.375rem" }}>{Global.currentEpisodeTitle}</h2>
       <h3 style={{ fontSize: ".875rem", color: "#a0a0a0" }}>
         {" "}
-        {Global.genres ? Global.genres : localStorage.getItem("LocalGenres")}
+        {Global.genres}
       </h3>
     </Container>
   );
