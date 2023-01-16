@@ -24,6 +24,7 @@ function Video() {
 
       if (data !== null) {
         setLink(data[0].location);
+        
       }
     }
 

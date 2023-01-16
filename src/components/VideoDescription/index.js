@@ -23,7 +23,7 @@ function VideoDescription({ visibility, animName }) {
 
       setInfos();
     }
-  }, [Global.animeId, setInfos]);
+  }, [Global.animeId]);
 
   function setInfos() {
     if (localData !== undefined) {
