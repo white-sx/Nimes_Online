@@ -64,8 +64,8 @@ function CardsSlide() {
         <Slider {...settings} style={{ marginLeft: ".3.5rem" }}>
           {data.map((data, index) => (
             <Col key={index} xs={6} md={2}>
-              <a
-                href={"/anime"}
+              <Link
+                to={"/anime"}
                 style={{ textDecoration: "none", color: "#f2f2f2" }}
                 onClick={function (e) {
                   Global.setAnimeId(data.id);
@@ -88,7 +88,7 @@ function CardsSlide() {
                     </Card.Title>
                   </Card.Body>
                 </Card>
-              </a>
+              </Link>
             </Col>
           ))}
         </Slider>

@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import { Ratio } from "react-bootstrap";
 import { GlobalContext } from "../Api/GlobalContext";
 import SpinnerComponent from "../Spinner";
+import { Link } from "react-router-dom";
 
 function Cards() {
   const Global = React.useContext(GlobalContext);
@@ -14,8 +15,8 @@ function Cards() {
     {
       Global.loading ? <SpinnerComponent/> :  Global.data.map((data, index) => (
         <Col key={index} xs={6} md={2}>
-          <a
-           href="video"
+          <Link
+           to="video"
             style={{ textDecoration: "none", color: "#f2f2f2" }}
             onClick={function (e) {
               localStorage.setItem("ImageLocalId", data.category_image);
@@ -44,7 +45,7 @@ function Cards() {
                 </Card.Title>
               </Card.Body>
             </Card>
-          </a>
+          </Link>
         </Col>
       ))}
     

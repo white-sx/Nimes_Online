@@ -24,33 +24,33 @@ function Video() {
 
       if (data !== null) {
         setLink(data[0].location);
-        
       }
     }
 
     callInfos(Global.episodeId);
-  }, [Global,setLink]);
+  }, [Global, setLink]);
 
   async function setTitleForm() {
     if (data !== null) {
       Global.setCurrentEpisodeTitle(data[0].title);
-      const animTitle = data[0].title;
+      let animTitle = data[0].title;
       animTitleForm = animTitle
         .replace(/[^a-zA-Z 0-9]+/gm, "_")
         .replace(/\s+/g, "_")
         .replace(/.Ep[a-zA-Z]+...../gm, "")
         .toLowerCase();
-    }
 
-    let response = await fetch(
-      `https://appanimeplus.tk/play-api.php?search=${animTitleForm}`
-    );
-    let jsonData = await response.json();
-
-    if (jsonData !== null) {
+      if (animTitle.length > 50) {
+        let tmp = animTitle.split(" ");
+        animTitle = tmp[0] + (" ") + tmp[1];
+        animTitleForm = animTitle
+        .replace(/[^a-zA-Z 0-9]+/gm, "_")
+        .replace(/\s+/g, "_")
+        .replace(/.Ep[a-zA-Z]+...../gm, "")
+        .toLowerCase();
+      }
      
-      Global.setAnimeId(jsonData[0].id);
-      localStorage.setItem("localAnimId", jsonData[0].id);
+      Global.setAnimeNameFormatted(animTitleForm);
     }
   }
   setTitleForm();
@@ -58,7 +58,12 @@ function Video() {
   return (
     <>
       <Container style={{ marginTop: "8rem" }}>
-        <ReactPlayer playing={false} width={"100%"} controls={true} url={link} />
+        <ReactPlayer
+          playing={false}
+          width={"100%"}
+          controls={true}
+          url={link}
+        />
         <VideoControl />
       </Container>
       <Container>
