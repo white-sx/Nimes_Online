@@ -13,6 +13,7 @@ import AnimePage from "./components/Pages/AnimePage";
 import { GlobalStorage } from "./components/Api/GlobalContext";
 import SearchResultPage from "./components/Pages/SearchResultPage";
 import Category from "./components/Pages/Category";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
               </Row>
             </Container>
           </header>
-          <main style={{ overflow: "hidden" }}>
+          <main style={{ overflow: "hidden", marginBottom:"3.5rem" }}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="video" element={<Video />} />
@@ -40,6 +41,9 @@ function App() {
           </main>
         </BrowserRouter>
       </GlobalStorage>
+     
+        <Footer />
+     
     </>
   );
 }
