@@ -22,9 +22,9 @@ function Video() {
         },
       });
 
-      if (data !== null) {
-        setLink(data[0].location);
-      }
+      if (data !== null) 
+      data[0].locationsd ? setLink(data[0].locationsd) : setLink(data[0].location);
+      
     }
 
     callInfos(Global.episodeId);
