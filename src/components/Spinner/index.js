@@ -1,11 +1,12 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
+import styles from "./Custom.module.css";
 
 function SpinnerComponent() {
   return (
     <>
       <Container
-        style={{ marginTop: "1rem", display: "flex", justifyContent: "center" }}
+       className={styles.ContainerCustom}
       >
         <Row>
           <Col xs={6} md={2}>
