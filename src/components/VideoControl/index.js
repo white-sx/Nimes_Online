@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { HiArrowSmLeft } from "react-icons/hi";
 import { HiArrowSmRight } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import styles from "./Custom.module.css";
 import { GlobalContext } from "../Api/GlobalContext";
 
 function VideoControl() {
@@ -36,8 +36,8 @@ function VideoControl() {
       <Container>
         <ButtonGroup
           size="lg"
-          className="mb-2"
-          style={{ width: "100%", marginTop: "8px" }}
+          className={`${styles.ButtonGroupCustom} mb-2`}
+        
         >
           <Button variant="outline-secondary" onClick={preventEpisode}>
             <h3>
@@ -46,16 +46,11 @@ function VideoControl() {
           </Button>
           <a
             href={"/anime"}
-            style={{
-              color: "#6c757d",
-              textDecoration: "none",
-              margin: "0px 4px",
-              fontSize: ".9rem",
-            }}
+           className={styles.linkCustom}
           >
             <Button
               variant="outline-secondary"
-              style={{ height: "100%", borderRadius: "0px" }}
+             className={styles.buttonCustom}
             >
               Todos os Episódios
             </Button>
