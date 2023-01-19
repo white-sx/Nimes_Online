@@ -1,0 +1,22 @@
+.footerText {
+    display: none;}
+
+.logosSocial{
+    color: #ccc;
+    font-Size: 1.2rem;
+}
+
+.logosSocial:hover{
+    color: #FAD82D;
+}
+   
+
+@media (min-width: 992px) {
+    .footerText {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     margin-bottom: -15px;}
+    
+  }
+  

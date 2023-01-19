@@ -8,7 +8,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Logo from "../../assets/img/logo.png";
 import LogoNav from "../../assets/img/logoNav.png";
 import Icon from "../../assets/img/search.svg";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import styles from "./Custom.module.css";
 import { GlobalContext } from "../Api/GlobalContext";
 import "./Style.css";
@@ -121,6 +121,11 @@ function NavbarH() {
                     <img src={Icon} />
                   </Button>
                 </Form>
+                <div className={styles.footerText}>
+          <p style={{  color: "#ccc", fontSize: ".8rem", fontStyle:"italic" }}>
+          Este projeto tem como e SOMENTE o objetivo de ESTUDO.
+              </p>
+          </div>
               </Offcanvas.Body>
             </div>
           </Navbar.Offcanvas>
