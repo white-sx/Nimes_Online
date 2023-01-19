@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import { GlobalContext } from "../Api/GlobalContext";
 import { Link } from "react-router-dom";
 import SpinnerComponent from "../Spinner";
-
+import styles from "./Custom.module.css"
 function CardsSlide() {
   const { request, data, error, loading } = useFetch();
   const Global = React.useContext(GlobalContext);
@@ -61,12 +61,12 @@ function CardsSlide() {
       {loading ? (
         <SpinnerComponent />
       ) : (
-        <Slider {...settings} style={{ marginLeft: ".3.5rem" }}>
+        <Slider {...settings} className={styles.sliderCustom}>
           {data.map((data, index) => (
             <Col key={index} xs={6} md={2}>
               <Link
                 to={"/anime"}
-                style={{ textDecoration: "none", color: "#f2f2f2" }}
+                className={styles.linkCustom}
                 onClick={function (e) {
                   Global.setAnimeId(data.id);
                   localStorage.setItem("localAnimeId", data.id);
@@ -76,14 +76,14 @@ function CardsSlide() {
                   localStorage.setItem("ImageLocalId", data.category_image);
                 }}
               >
-                <Card style={{ width: "90%" }} bg="dark" variant="dark">
+                <Card className={styles.cardCustom} bg="dark" variant="dark">
                   <Ratio aspectRatio="1x1">
                     <Card.Img
                       src={`https://cdn.appanimeplus.tk/img/${data.category_image}`}
                     />
                   </Ratio>
                   <Card.Body>
-                    <Card.Title style={{ fontSize: ".9rem" }}>
+                    <Card.Title className={styles.cardTitleCustom}>
                       {data.category_name}
                     </Card.Title>
                   </Card.Body>
