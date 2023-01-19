@@ -9,20 +9,10 @@ function Footer() {
       <Navbar bg="dark" expand="lg" fixed="bottom">
         <Container fluid style={{display:"flex", flexDirection:"column",position:"relative"}} >
           <div
-            style={{
-              display: "flex",
-              width: "100%",
-              height: "15px",
-              justifyContent: "space-between",
-              paddingBottom:"1.5rem"
-            }}
+           className={styles.divMain}
           >
             <div
-              style={{
-                display: "flex",
-               alignItems:"center",
-               paddingTop:"10px"
-              }}
+              className={styles.divSocial}
             >
               <a href="https://www.instagram.com/raffa_snts_/" target="_blank" className={styles.logosSocial} style={{ marginLeft:"5px" }}>
                 {<SiInstagram />}
@@ -36,13 +26,13 @@ function Footer() {
             </div>
             <div>
               {" "}
-              <p style={{ color: "#ccc", fontSize: ".9rem",marginRight:"5px" }}>
+              <p className={styles.pCopy}>
                 Nimes online &copy; 2023
               </p>
             </div>
           </div>
           <div className={styles.footerText}>
-          <p style={{  color: "#ccc", fontSize: ".8rem", fontStyle:"italic" }}>
+          <p>
           Este projeto tem como e SOMENTE o objetivo de ESTUDO.
               </p>
           </div>
