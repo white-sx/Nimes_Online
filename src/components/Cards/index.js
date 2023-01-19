@@ -5,6 +5,7 @@ import { Ratio } from "react-bootstrap";
 import { GlobalContext } from "../Api/GlobalContext";
 import SpinnerComponent from "../Spinner";
 import { Link } from "react-router-dom";
+import styles from "./Custom.module.css";
 
 function Cards() {
   const Global = React.useContext(GlobalContext);
@@ -27,11 +28,7 @@ function Cards() {
             }}
           >
             <Card
-              style={{
-                width: "100%",
-                height: "95%",
-                backgroundColor: "#1f221f",
-              }}
+              className={styles.cardsCustom}
               variant="dark"
             >
               <Ratio aspectRatio="1x1">
@@ -40,7 +37,7 @@ function Cards() {
                 />
               </Ratio>
               <Card.Body>
-                <Card.Title style={{ fontSize: ".9rem", width: "100%" }}>
+                <Card.Title className={styles.cardTitleCustom}>
                   {data.title}
                 </Card.Title>
               </Card.Body>
