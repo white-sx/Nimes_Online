@@ -8,7 +8,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Logo from "../../assets/img/logo.png";
 import LogoNav from "../../assets/img/logoNav.png";
 import Icon from "../../assets/img/search.svg";
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Custom.module.css";
 import { GlobalContext } from "../Api/GlobalContext";
 import "./Style.css";
@@ -38,15 +38,12 @@ function NavbarH() {
         <Container fluid>
           <Navbar.Brand>
             <a href="/">
-              <img style={{ maxWidth: "150px" }} src={Logo} />
+              <img className={styles.navLog} src={Logo} />
             </a>
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-xll`} />
           <Navbar.Offcanvas
-            style={{
-              background: "#1f221f",
-            }}
             className={styles.backNav}
             id={`offcanvasNavbar-expand-xll`}
             aria-labelledby={`offcanvasNavbarLabel-expand-xll`}
@@ -54,7 +51,7 @@ function NavbarH() {
           >
             <Offcanvas.Header closeButton closeVariant="white">
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-xll`}>
-                <img style={{ maxWidth: "80px" }} src={LogoNav} />
+                <img className={styles.navLogMobile} src={LogoNav} />
               </Offcanvas.Title>
             </Offcanvas.Header>
             <div className={styles.menuMobile}>
@@ -122,10 +119,8 @@ function NavbarH() {
                   </Button>
                 </Form>
                 <div className={styles.footerText}>
-          <p style={{  color: "#ccc", fontSize: ".8rem", fontStyle:"italic" }}>
-          Este projeto tem como e SOMENTE o objetivo de ESTUDO.
-              </p>
-          </div>
+                  <p>Este projeto tem como e SOMENTE o objetivo de ESTUDO.</p>
+                </div>
               </Offcanvas.Body>
             </div>
           </Navbar.Offcanvas>

@@ -1,6 +1,20 @@
+.navLog {
+  max-width: 150px;
+}
+
+.navLogMobile {
+  max-width: 80px;
+}
+
 .backNav {
   color: #fff;
+  background: #1f221f;
   max-width: 90%;
+}
+
+.navButton {
+  border: none;
+  background: #fad82d;
 }
 
 .menuMobile {
@@ -20,6 +34,12 @@
   width: 100%;
   left: 58%;
   transform: translate(-50%, -50%);
+}
+
+.footerText p {
+  color: #ccc;
+  font-size: 0.8rem;
+  font-style: italic;
 }
 
 @media (min-width: 992px) {
