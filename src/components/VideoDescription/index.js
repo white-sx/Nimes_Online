@@ -6,6 +6,7 @@ import styles from "./Custom.module.css";
 function VideoDescription({ visibility }) {
   const Global = React.useContext(GlobalContext);
 
+  if(Global.description)
   return (
     <>
       <Container
@@ -28,15 +29,10 @@ function VideoDescription({ visibility }) {
           </div>
         </div>
 
-        <h2 >{Global.currentEpisodeTitle}</h2>
-        <h3>
-          {" "}
-          {Global.category_genres}
-        </h3>
+        <h2>{Global.currentEpisodeTitle}</h2>
+        <h3> {Global.category_genres}</h3>
 
-        <p>
-          {` ${Global.description.substring(0, 424)}`}...
-        </p>
+        <p>{` ${Global.description.substring(0, 424)}`}...</p>
       </Container>
     </>
   );
