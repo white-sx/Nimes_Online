@@ -27,7 +27,8 @@ function AnimePage() {
         <Container className={Styles.containerMain}>
           <Row>
             <Col md="auto">
-              <img src={`https://cdn.appanimeplus.tk/img/${Global.idImage}`} />
+              <img alt={Global.animeTitle} src={`https://cdn.appanimeplus.tk/img/${Global.idImage}`} />
+              
             </Col>
             <Col className={Styles.animeTitle}>
               <h1>{Global.animeTitle}</h1>
