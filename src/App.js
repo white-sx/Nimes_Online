@@ -29,7 +29,7 @@ function App() {
               </Row>
             </Container>
           </header>
-          <main style={{ overflow: "hidden", marginBottom:"3.5rem" }}>
+          <main >
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="video" element={<Video />} />
