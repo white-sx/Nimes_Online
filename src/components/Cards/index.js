@@ -34,6 +34,7 @@ function Cards() {
               <Ratio aspectRatio="1x1">
                 <Card.Img
                   src={`https://cdn.appanimeplus.tk/img/${data.category_image}`}
+                  alt={data.title}
                 />
               </Ratio>
               <Card.Body>
