@@ -7,39 +7,27 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Highlights from "../../Carousel";
 import { Col } from "react-bootstrap";
+import styles from "./Custom.module.css";
 
 function Home() {
   return (
     <>
-     <Container >
-          <Row>
-            
-            <Col>
-              <Highlights />
-            </Col>
-          </Row>
-        </Container>
-      <Container style={{ marginTop: "1rem" }}>
-        <Label text="Recém Atualizados" />
-        <Row
-          style={{
-            borderTop: "3px solid #FAD82D",
-            padding: "5px 0px",
-            marginTop: ".5rem",
-          }}
-        >
-          <Cards/>
+      <Container>
+        <Row>
+          <Col>
+            <Highlights />
+          </Col>
         </Row>
       </Container>
-      <Container style={{ marginTop: "1rem" }}>
+      <Container className={styles.containerTop}>
+        <Label text="Recém Atualizados" />
+        <Row className={styles.containerLine}>
+          <Cards />
+        </Row>
+      </Container>
+      <Container className={styles.containerTop}>
         <Label text="Populares" />
-        <Row
-          style={{
-            borderTop: "3px solid #FAD82D",
-            padding: "5px 0px",
-            marginTop: ".5rem",
-          }}
-        >
+        <Row className={styles.containerLine}>
           <CardsSlide />
         </Row>
       </Container>
